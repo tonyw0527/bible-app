@@ -121,6 +121,8 @@ const Quick = observer(() => {
                 book: bookIndex,
                 chapter: i,
               });
+              Cookies.set("book", String(bookIndex), { expires: 365 });
+              Cookies.set("chapter", String(i), { expires: 365 });
             }}
           >
             {i} 장

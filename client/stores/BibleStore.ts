@@ -39,7 +39,6 @@ export default class BibleStore {
 
     // reactions
     autorun(() => {
-      console.log('bible length', this.lengthOfBible);
     });
   }
 
@@ -50,7 +49,7 @@ export default class BibleStore {
 
   async fetchOneChapter(book: number, chapter: number) {
     const result = await axios.get(
-      `http://localhost:${process.env.PORT_NUMBER}/bible`,
+      `/api/bible`,
     {
       params: {
         book: book,
@@ -59,9 +58,7 @@ export default class BibleStore {
       withCredentials: true
     });
 
-    console.log(result);
     runInAction(() => {
-      //console.log(result.data);
       this.curr_bible = result.data;
       this.curr_book = book;
       this.curr_chapter = chapter;
