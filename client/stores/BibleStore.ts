@@ -50,7 +50,7 @@ export default class BibleStore {
 
   async fetchOneChapter(book: number, chapter: number) {
     const result = await axios.get(
-      `http://localhost:3001/bible`,
+      `http://localhost:${process.env.PORT_NUMBER}/bible`,
     {
       params: {
         book: book,
