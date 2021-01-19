@@ -1,6 +1,8 @@
 # Bible App
 
-- jenkins auto deploy using github webhooks.
+- jenkins auto deploy with github webhooks.
+- nginx server
+- reverse proxied express server
 
 ## Stack
 
