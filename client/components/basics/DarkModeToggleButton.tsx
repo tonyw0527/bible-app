@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-right: 1rem;
+`;
+
 const Wrapper = styled.div`
   display: flex;
   border-radius: 50px;

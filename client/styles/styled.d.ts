@@ -8,6 +8,10 @@ declare module 'styled-components' {
         color: {
             body: string;
             text: string;
+            main_back: string;
+            main_state_text: string;
+            main_btn: string;
+            verse_num: string;
         };
     }
 }
