@@ -1,6 +1,6 @@
 # Bible App
 
-- jenkins auto deploy using github webhooks
+- jenkins auto deploy using github webhooks.
 
 ## Stack
 
