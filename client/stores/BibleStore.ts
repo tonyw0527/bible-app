@@ -49,7 +49,7 @@ export default class BibleStore {
 
   async fetchOneChapter(book: number, chapter: number) {
     const result = await axios.get(
-      `https://histime.ga/api/bible`,
+      `/api/bible`,
     {
       params: {
         book: book,
@@ -57,6 +57,7 @@ export default class BibleStore {
       },
       withCredentials: true
     });
+    console.log(result);
 
     runInAction(() => {
       this.curr_bible = result.data;
