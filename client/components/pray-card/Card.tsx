@@ -17,10 +17,7 @@ const CardBox = styled.div`
   width: 350px;
 
   margin: 0;
-  padding-top: 1rem;
-  padding-bottom: 0;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding: 1rem 1.5rem 0 1.5rem;
 
   // background: #184d47;
   background: url("/paper.jpg");
@@ -28,7 +25,7 @@ const CardBox = styled.div`
 
 const CardSubTitle = styled.span`
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   width: 100%;
 
   font-family: "NanumBarunGothic";
@@ -66,7 +63,7 @@ const CardImg = styled.img`
 const CardBasicBox = styled.div`
   width: 100%;
   margin-bottom: 0.5rem;
-  padding: 0 1rem;
+  padding: 0 0.6rem;
   word-break: keep-all;
   line-height: 1.5rem;
 `;
@@ -77,11 +74,13 @@ const CardHowtoOl = styled.ol`
   list-style: none;
 `;
 const Li = styled.li`
+  display: flex;
   margin-bottom: 0.5rem;
 `;
 const HowtoSpan = styled.span`
   font-weight: 700;
   font-size: 1.1rem;
+  margin-right: 0.5rem;
 `;
 const BottomBox = styled.div`
   width: 350px;
@@ -110,7 +109,7 @@ function CardContent({ name, list }: CardContentProps) {
     return list.map((item, index) => {
       return (
         <Li>
-          <HowtoSpan>{index + 1} </HowtoSpan> {item}
+          <HowtoSpan>{index + 1} </HowtoSpan> <span>{item}</span>
         </Li>
       );
     });
