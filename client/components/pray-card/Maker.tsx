@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useCardStore } from './index';
-import html2canvas from 'html2canvas';
-import styled from 'styled-components';
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { useCardStore } from "./index";
+import html2canvas from "html2canvas";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   margin: 1rem;
@@ -48,26 +48,39 @@ const Button = styled.button`
   }
 `;
 
+const CancelButton = styled.button`
+  background: none;
+  border: 0;
+  color: red;
+  opacity: 0.8;
+`;
+
 type ListItemProps = {
   item: string;
   index: number;
+  onSetContent: Dispatch<SetStateAction<Content>>;
 };
 
-function ListItem({ item, index }: ListItemProps) {
+function ListItem({ item, index, onSetContent }: ListItemProps) {
   return (
     <Li>
       <span>
-        {index + 1} {item}{' '}
+        {index + 1} {item}{" "}
       </span>
-      {/* <button
+      <CancelButton
         type="button"
         onClick={() => {
-          setContent((content) =>
-              ({ ...content, list: content.list.filter((i) => i !== item)));
+          onSetContent((content) => {
+            return {
+              ...content,
+              list: content.list.filter((item, idx) => idx !== index),
+              currText: "",
+            };
+          });
         }}
       >
         X
-      </button> */}
+      </CancelButton>
     </Li>
   );
 }
@@ -86,24 +99,24 @@ function ContentsBox({ index }: ContentsBoxProps) {
   const [state, dispatch] = useCardStore();
 
   const [content, setContent] = useState<Content>({
-    name: '',
-    currText: '',
+    name: "",
+    currText: "",
     list: [],
   });
 
   useEffect(() => {
-    dispatch({ type: 'ADD_CONTENT', content: content });
+    dispatch({ type: "ADD_CONTENT", content: content });
     return () => {};
   }, []);
 
   useEffect(() => {
-    dispatch({ type: 'UPDATE_CONTENT', index: index, content: content });
+    dispatch({ type: "UPDATE_CONTENT", index: index, content: content });
     return () => {};
   }, [content]);
 
   const renderList = () => {
     return content.list.map((item, index) => {
-      return <ListItem item={item} index={index} />;
+      return <ListItem item={item} index={index} onSetContent={setContent} />;
     });
   };
 
@@ -125,13 +138,13 @@ function ContentsBox({ index }: ContentsBoxProps) {
           setContent((content) => ({ ...content, currText: e.target.value }));
         }}
         onKeyPress={(e) => {
-          if (e.key === 'Enter') {
-            if (content.currText !== '') {
+          if (e.key === "Enter") {
+            if (content.currText !== "") {
               setContent((content) => {
                 return {
                   ...content,
                   list: content.list.concat([content.currText]),
-                  currText: '',
+                  currText: "",
                 };
               });
             }
@@ -149,7 +162,7 @@ function Maker() {
   const [state, dispatch] = useCardStore();
 
   const [contentsBoxArr, setContentsBoxArr] = useState<Array<React.ReactNode>>(
-    [],
+    []
   );
 
   const addContentsBox = () => {
@@ -179,7 +192,7 @@ function Maker() {
           placeholder="제목"
           value={state.title}
           onChange={(e) => {
-            dispatch({ type: 'SET_TITLE', title: e.target.value });
+            dispatch({ type: "SET_TITLE", title: e.target.value });
           }}
         />
         <Input
@@ -187,43 +200,26 @@ function Maker() {
           accept="image/*"
           placeholder="이미지"
           onChange={(e) => {
-            dispatch({ type: 'SET_IMG', img: e.target.value });
+            dispatch({ type: "SET_IMG", img: e.target.value });
             if (e.target.files && e.target.files[0]) {
               const reader = new FileReader();
               reader.onload = (e) => {
-                const img = document.getElementById('card_img');
+                const img = document.getElementById("card_img");
                 if (e.target) {
-                  img?.setAttribute('src', e.target.result!.toString());
+                  img?.setAttribute("src", e.target.result!.toString());
                 }
               };
               reader.readAsDataURL(e.target.files[0]);
             }
           }}
         />
-        {/* 
-        <Input
-          placeholder="이름1"
-          value={name1}
-          onChange={(e) => {
-            setName1(e.target.value);
-          }}
-          onKeyPress={(e) => {
-            if (e.key === 'Enter') {
-              recipeStore.setName1((prevState) => [...prevState, name1]);
-              setName1('');
-            }
-          }}
-        />
-        <ListBox>
-          <Ol>{renderHowto(1)}</Ol>
-        </ListBox>
-          */}
+
         <Input
           type="text"
           placeholder="말씀"
           value={state.word}
           onChange={(e) => {
-            dispatch({ type: 'SET_WORD', word: e.target.value });
+            dispatch({ type: "SET_WORD", word: e.target.value });
           }}
         />
 
@@ -237,13 +233,13 @@ function Maker() {
           onClick={() => {
             window.scrollTo(0, 0);
             html2canvas(
-              document.querySelector('#capture') ??
-                document.createElement('div'),
+              document.querySelector("#capture") ??
+                document.createElement("div")
             ).then((canvas) => {
               const anchor = document.getElementById(
-                'target',
+                "target"
               ) as HTMLAnchorElement;
-              anchor.href = canvas.toDataURL('image/jpeg');
+              anchor.href = canvas.toDataURL("image/jpeg");
               anchor.download = `${state.title}.jpg`;
               anchor.click();
             });
@@ -251,7 +247,7 @@ function Maker() {
         >
           기도카드 저장
         </Button>
-        <a href="#" id="target" style={{ display: 'none' }}></a>
+        <a href="#" id="target" style={{ display: "none" }}></a>
       </Form>
     </Wrapper>
   );
