@@ -33,8 +33,9 @@ const ContentBox = observer(() => {
 
   useEffect(() => {
     const v1 = document.getElementById("v1");
-    if (v1) {
+    if (v1 !== undefined) {
       v1.scrollIntoView();
+      window.scrollTo(0, 0);
     }
     return () => {};
   }, [curr_chapter]);
@@ -52,7 +53,7 @@ const ContentBox = observer(() => {
       });
 
       const target = document.getElementById("v" + String(to));
-      if (target) {
+      if (target !== undefined) {
         target.style.backgroundColor = "#9ad3bc";
         setTimeout(() => {
           target.style.backgroundColor = "rgba(0,0,0,0)";
