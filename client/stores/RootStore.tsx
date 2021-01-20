@@ -1,12 +1,15 @@
 import { createContext, useContext } from "react";
 
+import UserStore from "./UserStore";
 import BibleStore from "./BibleStore";
 
 class RootStore {
   bibleStore;
+  userStore;
 
   constructor() {
     this.bibleStore = new BibleStore();
+    this.userStore = new UserStore();
   }
 }
 
