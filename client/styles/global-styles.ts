@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
 
     html,
     body {
+        font-family: "Nanum Gothic", sans-serif;
         background: ${({ theme }) => theme.color.body};
         color: ${({ theme }) => theme.color.text};
     }

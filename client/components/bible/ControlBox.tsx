@@ -14,6 +14,10 @@ const StyledControlBox = styled.div`
   width: 100vw;
   height: 7vh;
   background-color: ${({ theme }) => theme.color.main_back};
+
+  // @media (min-width: 768px) {
+  //   position: static;
+  // }
 `;
 
 const StyledControlButton = styled.button`
@@ -63,6 +67,7 @@ const ControlBox = () => {
           return;
         }
         store?.bibleStore?.fetchOneChapter(book, chapter + 1);
+
         break;
 
       default:

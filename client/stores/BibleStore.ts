@@ -57,13 +57,12 @@ export default class BibleStore {
       },
       withCredentials: true
     });
-    console.log(result);
 
     runInAction(() => {
       this.curr_bible = result.data;
       this.curr_book = book;
       this.curr_chapter = chapter;
-      this.curr_verse = 1;
+      //this.curr_verse = 1;
       this.curr_book_name = bibleIndex[book][0];
       this.curr_book_max_chapter = bibleIndex[book][1];
     });
