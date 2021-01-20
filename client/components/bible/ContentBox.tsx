@@ -33,7 +33,7 @@ const ContentBox = observer(() => {
 
   useEffect(() => {
     const v1 = document.getElementById("v1");
-    if (v1 !== undefined) {
+    if (v1 !== null) {
       v1.scrollIntoView();
       window.scrollTo(0, 0);
     }
@@ -43,7 +43,7 @@ const ContentBox = observer(() => {
   useEffect(() => {
     setTimeout(() => {
       const prevTarget = document.getElementById("v" + String(to - 1));
-      if (prevTarget === undefined) {
+      if (prevTarget === null) {
         return;
       }
       prevTarget.scrollIntoView({
@@ -53,7 +53,7 @@ const ContentBox = observer(() => {
       });
 
       const target = document.getElementById("v" + String(to));
-      if (target !== undefined) {
+      if (target !== null) {
         target.style.backgroundColor = "#9ad3bc";
         setTimeout(() => {
           target.style.backgroundColor = "rgba(0,0,0,0)";
