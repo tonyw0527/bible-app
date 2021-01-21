@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import { useStore } from "../../stores/RootStore";
@@ -31,12 +31,13 @@ const ContentBox = observer(() => {
   const to = store.bibleStore.curr_verse;
   const { curr_chapter } = store.bibleStore;
 
+  const containerRef = useRef();
+
   useEffect(() => {
-    const v1 = document.getElementById("v1");
-    if (v1 !== null) {
-      v1.scrollIntoView();
-      window.scrollTo(0, 0);
-    }
+    const container = containerRef.current as HTMLElement;
+    container.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+
     return () => {};
   }, [curr_chapter]);
 
@@ -60,6 +61,7 @@ const ContentBox = observer(() => {
         }, 2000);
       }
     }, 500);
+
     return () => {};
   }, [to]);
 
@@ -70,7 +72,7 @@ const ContentBox = observer(() => {
     const arr2 = verses.slice(-remainder);
 
     return (
-      <Container>
+      <Container ref={containerRef}>
         <StyledContentBox>
           {arr1?.map((item) => {
             return (
