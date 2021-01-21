@@ -58,9 +58,9 @@ const ContentBox = observer(() => {
         target.style.backgroundColor = "#9ad3bc";
         setTimeout(() => {
           target.style.backgroundColor = "rgba(0,0,0,0)";
-        }, 2000);
+        }, 3000);
       }
-    }, 500);
+    }, 1500);
 
     return () => {};
   }, [to]);
