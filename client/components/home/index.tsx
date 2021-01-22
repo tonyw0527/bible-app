@@ -23,28 +23,40 @@ const TitleSpan = styled.span`
 
 const DescBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 3rem;
 `;
 const DescSpan = styled.span`
   font-size: 2rem;
 `;
 
-const LinkBox = styled.div`
-  margin: 1rem;
-`;
 const A = styled.a`
+  transition: transform 0.5s ease-out;
+
+  &: hover {
+    cursor: pointer;
+    transform: translateY(-1rem);
+  }
+`;
+
+const LinkBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
+  margin: 1rem;
+  background: none;
+
   width: 10rem;
   height: 10rem;
-  border: 2px solid ${({ theme }) => theme.color.text};
-  border-radius: 10px;
 
-  &: hover {
-    cursor: pointer;
-  }
+  font-size: 1.3rem;
+
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border-radius: 10px;
 `;
 
 const SignBox = styled.div``;
@@ -58,20 +70,17 @@ export default function Home() {
       </TitleBox>
 
       <DescBox>
-        {/* <DescBtn onClick={() => router.push("/bible")}>성경 읽기</DescBtn>
-        <DescBtn onClick={() => router.push("/pray-maker")}>
-          기도카드 만들기
-        </DescBtn> */}
-        <LinkBox>
-          <Link href="/bible">
-            <A>성경 읽기</A>
-          </Link>
-        </LinkBox>
-        <LinkBox>
-          <Link href="/pray-card">
-            <A>기도 카드</A>
-          </Link>
-        </LinkBox>
+        <Link href="/bible">
+          <A>
+            <LinkBox>성경 읽기</LinkBox>
+          </A>
+        </Link>
+
+        <Link href="/pray-card">
+          <A>
+            <LinkBox>기도 카드</LinkBox>
+          </A>
+        </Link>
       </DescBox>
 
       <DescSpan>함께 읽어요!</DescSpan>
