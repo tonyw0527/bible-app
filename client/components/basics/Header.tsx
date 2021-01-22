@@ -1,7 +1,9 @@
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import DarkModeToggleButton from "./DarkModeToggleButton";
 import { observer } from "mobx-react";
 import { useStore } from "../../stores/RootStore";
+import axios from "axios";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -25,12 +27,35 @@ const Input = styled.input`
   border: 2px solid gray;
 `;
 
+const Span = styled.span`
+  display: block;
+  margin-top: 0.6rem;
+  margin-left: 1rem;
+  font-size: 1rem;
+  color: yellow;
+`;
+
 type HeaderProps = {
   onToggleTheme: () => void;
 };
 
 const Header = observer(({ onToggleTheme }: HeaderProps) => {
   const store = useStore();
+  const { isAuth } = store.userStore;
+  const invicodeInputRef = useRef<HTMLInputElement>();
+  const authSpanRef = useRef<HTMLSpanElement>();
+
+  useEffect(() => {
+    if (isAuth) {
+      invicodeInputRef.current.style.display = "none";
+      authSpanRef.current.style.display = "block";
+      authSpanRef.current.innerText = "환영합니다! :D";
+    } else {
+      invicodeInputRef.current.style.display = "block";
+      authSpanRef.current.style.display = "none";
+    }
+    return () => {};
+  }, [isAuth]);
 
   return (
     <Container>
@@ -45,6 +70,7 @@ const Header = observer(({ onToggleTheme }: HeaderProps) => {
         <A>기도카드</A>
       </Link>
       <Input
+        ref={invicodeInputRef}
         type="text"
         value={store.userStore.invitation_code}
         onChange={(e) => {
@@ -52,6 +78,7 @@ const Header = observer(({ onToggleTheme }: HeaderProps) => {
         }}
         placeholder="초대코드"
       />
+      <Span ref={authSpanRef}></Span>
     </Container>
   );
 });
