@@ -4,12 +4,11 @@ import Cookies from 'js-cookie';
 
 export default class UserStore {
   // states
-  invitation_code: string
-  isAuth: boolean
+  invitation_code: string = "";
+  isAuth: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
-    this.invitation_code = "";
     this.requestAuth();
 
     // reactions

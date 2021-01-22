@@ -3,7 +3,6 @@ import Link from "next/link";
 import DarkModeToggleButton from "./DarkModeToggleButton";
 import { observer } from "mobx-react";
 import { useStore } from "../../stores/RootStore";
-import axios from "axios";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -20,6 +19,7 @@ const A = styled.a`
 `;
 
 const Input = styled.input`
+  display: none;
   width: 4rem;
   height: 1.3rem;
   margin-top: 0.4rem;
@@ -28,7 +28,7 @@ const Input = styled.input`
 `;
 
 const Span = styled.span`
-  display: block;
+  display: none;
   margin-top: 0.6rem;
   margin-left: 1rem;
   font-size: 1rem;
