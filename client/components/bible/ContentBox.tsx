@@ -34,6 +34,10 @@ const ContentBox = observer(() => {
   const containerRef = useRef();
 
   useEffect(() => {
+    console.log("test");
+  }, []);
+
+  useEffect(() => {
     const container = containerRef.current as HTMLElement;
     container.scrollTo(0, 0);
     window.scrollTo(0, 0);
