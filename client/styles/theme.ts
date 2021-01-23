@@ -7,9 +7,9 @@ const lightTheme: DefaultTheme = {
     color: {
         body: '#E2E2E2',
         text: '#363537',
-        main_back: '#264445',
-        main_state_text: '#f7dd53',
-        main_btn: '#4e8d7c',
+        main_back: '#a0c1b8',
+        main_state_text: '#ffdf91',
+        main_btn: '#719fb0',
         verse_num: '#045762',
     }
 }
