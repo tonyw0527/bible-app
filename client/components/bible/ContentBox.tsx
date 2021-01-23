@@ -31,14 +31,24 @@ const ContentBox = observer(() => {
   const to = store.bibleStore.curr_verse;
   const { curr_chapter } = store.bibleStore;
 
-  const containerRef = useRef();
+  const containerRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
-    console.log("test");
+    const container = containerRef.current;
+    container.onscroll = function (e) {
+      const topButton = document.getElementById("topButton");
+      if (container.scrollTop + window.innerHeight >= container.scrollHeight) {
+        topButton.style.opacity = "1.0";
+        topButton.style.visibility = "visible";
+      } else {
+        topButton.style.opacity = "0";
+        topButton.style.visibility = "hidden";
+      }
+    };
   }, []);
 
   useEffect(() => {
-    const container = containerRef.current as HTMLElement;
+    const container = containerRef.current;
     container.scrollTo(0, 0);
     window.scrollTo(0, 0);
 
@@ -76,7 +86,7 @@ const ContentBox = observer(() => {
     const arr2 = verses.slice(-remainder);
 
     return (
-      <Container ref={containerRef}>
+      <Container ref={containerRef} id={"contentCtn"}>
         <StyledContentBox>
           {arr1?.map((item) => {
             return (
