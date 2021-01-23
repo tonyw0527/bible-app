@@ -1,4 +1,4 @@
-import { useStore } from "../../stores/RootStore";
+import { useStore } from "../../stores/StoreProvider";
 import { observer } from "mobx-react";
 
 import styled from "styled-components";

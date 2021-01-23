@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
-import { useStore } from "../../stores/RootStore";
+import { useStore } from "../../stores/StoreProvider";
 import VerseBox from "./VerseBox";
 
 import styled from "styled-components";

@@ -1,4 +1,4 @@
-import { StoreProvider } from "../stores/RootStore";
+import { StoreProvider } from "../stores/StoreProvider";
 import { useDarkMode } from "../hooks/useDarkMode";
 import { lightTheme, darkTheme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -15,7 +15,7 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <StoreProvider>
+      <StoreProvider {...pageProps}>
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyle />
           <Layout onToggleTheme={toggleTheme}>

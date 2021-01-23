@@ -1,9 +1,11 @@
-import { createContext, useContext } from "react";
-
 import UserStore from "./UserStore";
 import BibleStore from "./BibleStore";
 
-class RootStore {
+import { enableStaticRendering } from "mobx-react";
+
+enableStaticRendering(typeof window === "undefined");
+
+export default class RootStore {
   bibleStore;
   userStore;
 
@@ -12,21 +14,3 @@ class RootStore {
     this.userStore = new UserStore();
   }
 }
-
-const StoreContext = createContext<RootStore | undefined>(undefined);
-
-type StoreProviderProps = {
-  children: React.ReactNode;
-};
-
-// Provider - for index.js
-export const StoreProvider = ({ children }: StoreProviderProps) => {
-  return (
-    <StoreContext.Provider value={new RootStore()}>
-      {children}
-    </StoreContext.Provider>
-  );
-};
-
-// useStore - for componenets
-export const useStore = () => useContext(StoreContext);

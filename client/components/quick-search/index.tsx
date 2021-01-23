@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useStore } from "../../stores/RootStore";
+import { useStore } from "../../stores/StoreProvider";
 import { observer } from "mobx-react";
 import bibleIndex from "../../utils/bibleIndex";
 import Cookies from "js-cookie";

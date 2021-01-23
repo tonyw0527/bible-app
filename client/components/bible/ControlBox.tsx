@@ -1,4 +1,4 @@
-import { useStore } from "../../stores/RootStore";
+import { useStore } from "../../stores/StoreProvider";
 import { useRouter } from "next/router";
 
 import styled from "styled-components";

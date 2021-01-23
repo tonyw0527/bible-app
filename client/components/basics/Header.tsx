@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import DarkModeToggleButton from "./DarkModeToggleButton";
 import { observer } from "mobx-react";
-import { useStore } from "../../stores/RootStore";
+import { useStore } from "../../stores/StoreProvider";
 import styled from "styled-components";
 
 const Container = styled.div`
