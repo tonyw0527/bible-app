@@ -76,6 +76,9 @@ const Header = observer(({ onToggleTheme }: HeaderProps) => {
         onChange={(e) => {
           store.userStore.updateInvitationCode(e.target.value);
         }}
+        onBlur={() => {
+          store.userStore.requestAuth();
+        }}
         placeholder="초대코드"
       />
       <Span ref={authSpanRef}></Span>
