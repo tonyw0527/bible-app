@@ -4,12 +4,18 @@ import html2canvas from "html2canvas";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  margin: 1rem;
+  margin: 0 1rem 0 1rem;
   width: 300px;
 `;
 
-const H1 = styled.h1`
+const Span = styled.span`
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
   text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
 `;
 
 const Form = styled.form`
@@ -36,15 +42,17 @@ const Li = styled.li`
 `;
 
 const Button = styled.button`
+  margin-bottom: 2rem;
   padding: 0.5rem;
   background: none;
-  border: 0;
+  border: 1px solid black;
   outline: 0;
 
   color: ${({ theme }) => theme.color.text};
 
   &: hover {
     cursor: pointer;
+    background: #bbbbbb;
   }
 `;
 
@@ -181,7 +189,7 @@ function Maker() {
 
   return (
     <Wrapper>
-      <H1>기도 카드 만들기</H1>
+      <Span>기도 카드 만들기</Span>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
@@ -214,6 +222,11 @@ function Maker() {
           }}
         />
 
+        <Button type="button" onClick={addContentsBox}>
+          사람 추가
+        </Button>
+        {renderContentsBox()}
+
         <Input
           type="text"
           placeholder="말씀"
@@ -222,11 +235,6 @@ function Maker() {
             dispatch({ type: "SET_WORD", word: e.target.value });
           }}
         />
-
-        <Button type="button" onClick={addContentsBox}>
-          사람 추가
-        </Button>
-        {renderContentsBox()}
 
         <Button
           type="button"
