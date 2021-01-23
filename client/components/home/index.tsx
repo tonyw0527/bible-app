@@ -23,7 +23,6 @@ const TitleSpan = styled.span`
 
 const DescBox = styled.div`
   display: flex;
-  flex-wrap: wrap;
   margin-bottom: 3rem;
 `;
 const DescSpan = styled.span`
