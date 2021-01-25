@@ -56,25 +56,23 @@ const ContentBox = observer(() => {
   }, [curr_chapter]);
 
   useEffect(() => {
-    setTimeout(() => {
-      const prevTarget = document.getElementById("v" + String(to - 1));
-      if (prevTarget === null) {
-        return;
-      }
-      prevTarget.scrollIntoView({
-        behavior: "auto",
-        block: "start",
-        inline: "nearest",
-      });
+    const prevTarget = document.getElementById("v" + String(to - 1));
+    if (prevTarget === null) {
+      return;
+    }
+    prevTarget.scrollIntoView({
+      behavior: "auto",
+      block: "start",
+      inline: "nearest",
+    });
 
-      const target = document.getElementById("v" + String(to));
-      if (target !== null) {
-        target.style.backgroundColor = "#9ad3bc";
-        setTimeout(() => {
-          target.style.backgroundColor = "rgba(0,0,0,0)";
-        }, 3000);
-      }
-    }, 1500);
+    const target = document.getElementById("v" + String(to));
+    if (target !== null) {
+      target.style.backgroundColor = "#9ad3bc";
+      setTimeout(() => {
+        target.style.backgroundColor = "rgba(0,0,0,0)";
+      }, 2000);
+    }
 
     return () => {};
   }, [to]);
