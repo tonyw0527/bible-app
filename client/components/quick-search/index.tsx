@@ -74,34 +74,21 @@ const Quick = observer(() => {
     const prev_book = searchState.book;
     const prev_chapter = searchState.chapter;
 
-    if (prev_book && prev_chapter) {
-      console.log("state from cookies", prev_book, prev_chapter);
-      setSearchState({ book: prev_book, chapter: prev_chapter });
+    if (!prev_book && !prev_chapter) {
+      return;
     }
 
-    const curr_book = document.getElementById(
-      "book" + store.bibleStore.curr_book
-    );
-    const curr_chapter = document.getElementById(
-      "chapter" + store.bibleStore.curr_chapter
-    );
+    const curr_book = document.getElementById("book" + prev_book);
+    const curr_chapter = document.getElementById("chapter" + prev_chapter);
 
     curr_book.scrollIntoView();
     document.getElementById("bookCtn").scrollTop -= 250;
-    curr_book.style.backgroundColor = "#9ad3bc";
-    setTimeout(() => {
-      curr_book.style.backgroundColor = "rgba(0,0,0,0)";
-    }, 2000);
+    curr_book.style.backgroundColor = "yellowGreen";
 
-    if (curr_chapter === null) {
-      return;
-    }
     curr_chapter.scrollIntoView();
     document.getElementById("chapterCtn").scrollTop -= 250;
-    curr_chapter.style.backgroundColor = "#9ad3bc";
-    setTimeout(() => {
-      curr_chapter.style.backgroundColor = "rgba(0,0,0,0)";
-    }, 2000);
+    curr_chapter.style.backgroundColor = "yellowGreen";
+
     return () => {};
   }, []);
 
@@ -118,13 +105,24 @@ const Quick = observer(() => {
           id={"book" + i}
           key={"book" + i}
           onClick={(e) => {
-            if (searchState.book) {
-              const id = "book" + searchState.book;
+            const { book, chapter } = searchState;
+
+            if (book) {
+              const id = "book" + book;
               const prevChoice = document.getElementById(id);
               prevChoice!.style.background = "none";
             }
+
             const choice = document.getElementById((e.target as Element).id);
             choice!.style.background = "yellowGreen";
+
+            const chapter_id = "chapter" + chapter;
+            const prevChapter = document.getElementById(chapter_id);
+
+            if (prevChapter) {
+              console.log(prevChapter);
+              prevChapter.style.background = "none";
+            }
             setSearchState({ book: i, chapter: undefined });
           }}
         >
