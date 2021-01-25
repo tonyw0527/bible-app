@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -30,13 +30,11 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
           <meta charSet="utf-8" />
           <link rel="manifest" href="/site.webmanifest" />
-
           <meta name="description" content="성경 읽기 사이트입니다." />
-          <title>성경 앱</title>
           {/* favicon tags */}
           <link
             rel="apple-touch-icon"
@@ -61,14 +59,14 @@ export default class MyDocument extends Document {
           <meta property="og:description" content="아름다운 성경 앱입니다." />
           <meta
             property="og:image"
-            content="https://histime.ga/android-chrome-512x512.png"
+            content="https://histime.ga/thumbnail.gif"
           />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

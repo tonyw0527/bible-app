@@ -17,6 +17,7 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <title>성경 앱</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <StoreProvider {...pageProps}>
