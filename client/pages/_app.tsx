@@ -46,7 +46,7 @@ function App({ Component, pageProps }: AppProps) {
         <meta property="og:description" content="아름다운 성경 앱입니다." />
         <meta
           property="og:image"
-          content="https://cdn.histime.ga/android-chrome-512x512.png"
+          content="https://histime.ga/android-chrome-512x512.png"
         />
       </Head>
       <StoreProvider {...pageProps}>
