@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useStore } from "../../stores/StoreProvider";
 import { observer } from "mobx-react";
@@ -68,6 +68,24 @@ const Quick = observer(() => {
     book: undefined,
     chapter: undefined,
   });
+
+  // init - selecting curr_book, curr_chapter
+  useEffect(() => {
+    const curr_book = document.getElementById(
+      "book" + store.bibleStore.curr_book
+    );
+    curr_book.scrollIntoView();
+    curr_book.style.backgroundColor = "#9ad3bc";
+    setTimeout(() => {
+      curr_book.style.backgroundColor = "rgba(0,0,0,0)";
+    }, 2000);
+
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    console.log("serch state - ", searchState);
+  }, [searchState]);
 
   const renderCategory1 = () => {
     const books = [];
