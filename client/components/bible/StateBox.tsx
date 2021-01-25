@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 const StyledStateBox = styled.div`
   width: 100%;
-  height: 10vh;
+  height: 3.5rem;
   background: ${({ theme }) => theme.color.main_back};
 
   text-align: center;
@@ -13,7 +13,7 @@ const StyledStateBox = styled.div`
 
 const StyledStateSpan = styled.span`
   display: block;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 
   font-weight: 700;
   font-size: 1.5rem;

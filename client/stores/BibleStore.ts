@@ -39,6 +39,7 @@ export default class BibleStore {
 
     // reactions
     autorun(() => {
+      console.log("Bible Data Fetching - ", this.curr_bible);
     });
   }
 

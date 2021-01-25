@@ -32,7 +32,6 @@ const Span = styled.span`
   margin-top: 0.8rem;
   margin-left: 1rem;
   font-size: 0.7rem;
-  color: #1a508b;
 `;
 
 type HeaderProps = {

@@ -8,9 +8,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
-  height: 75vh;
+  height: 80vh;
+  margin-bootom: 7vh;
   padding: 1rem 0.8rem;
-  padding-bottom: 0;
 
   word-break: keep-all;
   line-height: 2rem;
