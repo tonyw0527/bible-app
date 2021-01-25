@@ -1,8 +1,3 @@
-// {
-//   "presets": ["next/babel"],
-//   "plugins": [["styled-components", { "ssr": true }]]
-// }
-
 const presets = ['next/babel'];
 const plugins = [
   ['styled-components', { 'ssr': true }],

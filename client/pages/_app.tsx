@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { StoreProvider } from "../stores/StoreProvider";
 import { useDarkMode } from "../hooks/useDarkMode";
 import { lightTheme, darkTheme } from "../styles/theme";
@@ -15,6 +16,13 @@ function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <meta charSet="utf-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="성경 읽기 사이트입니다." />
+        <title>성경 앱</title>
+      </Head>
       <StoreProvider {...pageProps}>
         <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
           <GlobalStyle />
