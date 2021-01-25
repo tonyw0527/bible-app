@@ -29,7 +29,7 @@ const Input = styled.input`
 
 const Span = styled.span`
   display: none;
-  margin-top: 0.8rem;
+  margin-top: 0.7rem;
   margin-left: 1rem;
   font-size: 0.7rem;
 `;
