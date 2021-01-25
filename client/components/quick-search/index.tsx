@@ -65,21 +65,43 @@ const Quick = observer(() => {
   const store = useStore();
 
   const [searchState, setSearchState] = useState<SearchState>({
-    book: undefined,
-    chapter: undefined,
+    book: Number(Cookies.get("book")),
+    chapter: Number(Cookies.get("chapter")),
   });
 
   // init - selecting curr_book, curr_chapter
   useEffect(() => {
+    const prev_book = searchState.book;
+    const prev_chapter = searchState.chapter;
+
+    if (prev_book && prev_chapter) {
+      console.log("state from cookies", prev_book, prev_chapter);
+      setSearchState({ book: prev_book, chapter: prev_chapter });
+    }
+
     const curr_book = document.getElementById(
       "book" + store.bibleStore.curr_book
     );
+    const curr_chapter = document.getElementById(
+      "chapter" + store.bibleStore.curr_chapter
+    );
+
     curr_book.scrollIntoView();
+    document.getElementById("bookCtn").scrollTop -= 250;
     curr_book.style.backgroundColor = "#9ad3bc";
     setTimeout(() => {
       curr_book.style.backgroundColor = "rgba(0,0,0,0)";
     }, 2000);
 
+    if (curr_chapter === null) {
+      return;
+    }
+    curr_chapter.scrollIntoView();
+    document.getElementById("chapterCtn").scrollTop -= 250;
+    curr_chapter.style.backgroundColor = "#9ad3bc";
+    setTimeout(() => {
+      curr_chapter.style.backgroundColor = "rgba(0,0,0,0)";
+    }, 2000);
     return () => {};
   }, []);
 
@@ -188,10 +210,10 @@ const Quick = observer(() => {
         <TitleSpan>빠른 검색</TitleSpan>
       </TitleBox>
       <CategoryWrapper>
-        <CategoryBox>
+        <CategoryBox id="bookCtn">
           <Ul>{renderCategory1()}</Ul>
         </CategoryBox>
-        <CategoryBox>
+        <CategoryBox id="chapterCtn">
           <Ul>{renderCategory2()}</Ul>
         </CategoryBox>
         <CategoryBox>
