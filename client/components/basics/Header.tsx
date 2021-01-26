@@ -41,11 +41,14 @@ type HeaderProps = {
 const Header = observer(({ onToggleTheme }: HeaderProps) => {
   const store = useStore();
   const { isAuth } = store.userStore;
+  const { curr_book, curr_chapter } = store.bibleStore;
   const invicodeInputRef = useRef<HTMLInputElement>();
   const authSpanRef = useRef<HTMLSpanElement>();
 
   useEffect(() => {
     if (isAuth) {
+      store.bibleStore.fetchOneChapter(curr_book, curr_chapter);
+
       invicodeInputRef.current.style.display = "none";
       authSpanRef.current.style.display = "block";
       authSpanRef.current.innerText = "환영합니다! :D";
