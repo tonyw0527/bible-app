@@ -16,6 +16,10 @@ const A = styled.a`
   margin-right: 1rem;
   font-size: 1.3rem;
   margin-top: 0.3rem;
+
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 const Input = styled.input`
