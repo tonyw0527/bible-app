@@ -5,16 +5,14 @@ import styled from "styled-components";
 
 const StyledStateBox = styled.div`
   width: 100%;
-  height: 3.5rem;
+  height: 7vh;
   background: ${({ theme }) => theme.color.main_back};
-
   text-align: center;
 `;
 
 const StyledStateSpan = styled.span`
   display: block;
-  margin-top: 1rem;
-
+  margin-top: 0.65rem;
   font-weight: 700;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.color.main_state_text};

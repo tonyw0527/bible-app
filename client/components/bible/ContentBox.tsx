@@ -8,12 +8,11 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
-  height: 75vh;
-  margin-bootom: 7vh;
-  padding: 1rem 0.8rem;
+  height: 79vh;
+  padding: 0.8rem 0.8rem;
 
   word-break: keep-all;
-  line-height: 2rem;
+  line-height: 1.9rem;
 
   overflow-x: hidden;
 
@@ -74,6 +73,7 @@ const ContentBox = observer(() => {
       }, 2000);
     }
 
+    window.scrollTo(0, 0);
     return () => {};
   }, [to]);
 

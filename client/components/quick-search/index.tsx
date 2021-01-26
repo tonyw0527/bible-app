@@ -40,7 +40,7 @@ const CategoryBox = styled.div`
 
 const Ul = styled.ul`
   list-style-type: none;
-  height: 88vh;
+  height: 78vh;
 `;
 
 const Li = styled.li`
@@ -82,13 +82,12 @@ const Quick = observer(() => {
     const curr_chapter = document.getElementById("chapter" + prev_chapter);
 
     curr_book.scrollIntoView();
-    document.getElementById("bookCtn").scrollTop -= 250;
+    //document.getElementById("bookCtn").scrollTop -= 250;
     curr_book.style.backgroundColor = "yellowGreen";
 
     curr_chapter.scrollIntoView();
-    document.getElementById("chapterCtn").scrollTop -= 250;
+    //document.getElementById("chapterCtn").scrollTop -= 250;
     curr_chapter.style.backgroundColor = "yellowGreen";
-
     return () => {};
   }, []);
 
