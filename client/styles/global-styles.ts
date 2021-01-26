@@ -4,14 +4,8 @@ import { normalize } from 'styled-normalize';
 export const GlobalStyle = createGlobalStyle`
     ${normalize}
 
-    html {
-        height: -webkit-fill-available;
-    }
-
+    html,
     body {
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
-
         font-family: "Nanum Gothic", sans-serif;
         background: ${({ theme }) => theme.color.body};
         color: ${({ theme }) => theme.color.text};
