@@ -44,6 +44,7 @@ const Main = () => {
         onClick={() => {
           const contentCtn = document.getElementById("contentCtn");
           contentCtn.scrollTo(0, 0);
+          window.scrollTo(0, 0);
         }}
       ></ScrollToTopButton>
     </Container>

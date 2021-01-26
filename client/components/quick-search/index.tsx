@@ -88,6 +88,8 @@ const Quick = observer(() => {
     curr_chapter.scrollIntoView();
     //document.getElementById("chapterCtn").scrollTop -= 250;
     curr_chapter.style.backgroundColor = "yellowGreen";
+
+    window.scrollTo(0, 0);
     return () => {};
   }, []);
 
