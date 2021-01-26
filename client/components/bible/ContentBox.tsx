@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 75vh;
   margin-bootom: 7vh;
   padding: 1rem 0.8rem;
 
