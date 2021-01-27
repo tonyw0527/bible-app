@@ -1,30 +1,41 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin-right: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+  padding-top: 0.4rem;
+
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   border-radius: 50px;
-  width: 3.7rem;
-  padding: 0.3rem;
-  background-color: darkslateblue;
-  transition: background-color 0.2s;
-  cursor: pointer;
+  // border: 2px solid gray;
+  // width: 3.7rem;
+  padding: 0.2rem;
+  background-color: ${({ theme }) => theme.color.body};
+  transition: background-color 1s;
 `;
 
 const Button = styled.button`
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   border: 0;
   border-radius: 20px;
   outline: 0;
-  background-color: white;
+  background: url(${({ theme }) => theme.mode_img});
   transition: transform 0.1s;
-  transform: ${({ theme }) => {
+  // transform: ${({ theme }) => {
     return theme.mode === "light" ? "translateX(0px)" : "translateX(28px)";
   }};
+
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 type DarkModeToggleButtonProps = {

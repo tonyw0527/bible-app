@@ -65,7 +65,6 @@ const Header = observer(({ onToggleTheme }: HeaderProps) => {
 
   return (
     <Container>
-      <DarkModeToggleButton onToggleTheme={onToggleTheme} />
       <Link href="/">
         <A>홈</A>
       </Link>
@@ -88,6 +87,7 @@ const Header = observer(({ onToggleTheme }: HeaderProps) => {
         placeholder="초대코드"
       />
       <Span ref={authSpanRef}></Span>
+      <DarkModeToggleButton onToggleTheme={onToggleTheme} />
     </Container>
   );
 });
