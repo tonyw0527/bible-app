@@ -4,43 +4,50 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 const StyledControlBox = styled.div`
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
+  position: sticky;
+  bottom: 0.5rem;
   padding: 0.3rem;
 
-  width: 100vw;
-  height: 7vh;
-  background-color: ${({ theme }) => theme.color.main_back};
-
-  // @media (min-width: 768px) {
-  //   position: static;
-  // }
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `;
 
-const StyledControlButton = styled.button`
-  width: 5rem;
-  height: 2rem;
-  margin: 0.2rem;
+const CircleButton = styled.button`
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.3rem;
 
+  @media (min-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  border-radius: 3rem;
   border: 0;
-  border-radius: 0.7rem;
   outline: 0;
-  background-color: ${({ theme }) => theme.color.main_btn};
-
-  font-size: 0.9rem;
-  color: ${({ theme }) => theme.color.main_state_text};
+  background: none;
+  opacity: 0.7;
 
   &: hover {
     cursor: pointer;
-    background-color: #16c79a;
   }
+`;
 
-  &: active {
-
-  }
+const HomeBtn = styled(CircleButton)`
+  background-image: url("./home.svg");
+`;
+const SearchBtn = styled(CircleButton)`
+  background-image: url("./search.svg");
+`;
+const LeftBtn = styled(CircleButton)`
+  background-image: url("./left.svg");
+`;
+const RightBtn = styled(CircleButton)`
+  background-image: url("./right.svg");
+`;
+const TopBtn = styled(CircleButton)`
+  background-image: url("./chevron.svg");
 `;
 
 const ControlBox = () => {
@@ -77,18 +84,19 @@ const ControlBox = () => {
 
   return (
     <StyledControlBox>
-      <StyledControlButton onClick={() => router.push("/")}>
-        {"홈으로"}
-      </StyledControlButton>
-      <StyledControlButton onClick={() => router.push("/quick-search")}>
-        {"빠른 검색"}
-      </StyledControlButton>
-      <StyledControlButton onClick={() => handlePrevNextBtn("prev")}>
-        {"이전 장"}
-      </StyledControlButton>
-      <StyledControlButton onClick={() => handlePrevNextBtn("next")}>
-        {"다음 장"}
-      </StyledControlButton>
+      <HomeBtn onClick={() => router.push("/")}></HomeBtn>
+      <SearchBtn onClick={() => router.push("/quick-search")}></SearchBtn>
+      <LeftBtn onClick={() => handlePrevNextBtn("prev")}></LeftBtn>
+      <RightBtn onClick={() => handlePrevNextBtn("next")}></RightBtn>
+      <TopBtn
+        id="topButton"
+        type="button"
+        onClick={() => {
+          const contentCtn = document.getElementById("contentCtn");
+          contentCtn.scrollTo(0, 0);
+          window.scrollTo(0, 0);
+        }}
+      ></TopBtn>
     </StyledControlBox>
   );
 };

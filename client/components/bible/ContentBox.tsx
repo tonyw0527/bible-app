@@ -3,12 +3,10 @@ import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import { useStore } from "../../stores/StoreProvider";
 import VerseBox from "./VerseBox";
-
 import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
-  height: 79vh;
   padding: 0.8rem 0.8rem;
 
   word-break: keep-all;
@@ -31,20 +29,6 @@ const ContentBox = observer(() => {
   const { curr_chapter } = store.bibleStore;
 
   const containerRef = useRef<HTMLDivElement>();
-
-  useEffect(() => {
-    const container = containerRef.current;
-    container.onscroll = function (e) {
-      const topButton = document.getElementById("topButton");
-      if (container.scrollTop + window.innerHeight >= container.scrollHeight) {
-        topButton.style.opacity = "1.0";
-        topButton.style.visibility = "visible";
-      } else {
-        topButton.style.opacity = "0";
-        topButton.style.visibility = "hidden";
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
