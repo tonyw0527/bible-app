@@ -8,7 +8,7 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   justify-content: start;
-  padding: 0.5rem;
+  padding: 0.5rem 1.1rem;
   width: 100%;
 `;
 
@@ -33,9 +33,9 @@ const Input = styled.input`
 
 const Span = styled.span`
   display: none;
-  margin-top: 0.7rem;
+  margin-top: 0.65rem;
   margin-left: 1rem;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 `;
 
 type HeaderProps = {

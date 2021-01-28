@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   position: absolute;
   top: 0;
-  right: 0.5rem;
+  right: 1.1rem;
   padding-top: 0.4rem;
 
   &: hover {
@@ -14,16 +14,14 @@ const Container = styled.div`
 const Wrapper = styled.div`
   display: flex;
   border-radius: 50px;
-  // border: 2px solid gray;
-  // width: 3.7rem;
   padding: 0.2rem;
   background-color: ${({ theme }) => theme.color.body};
   transition: background-color 1s;
 `;
 
 const Button = styled.button`
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border: 0;
   border-radius: 20px;
   outline: 0;

@@ -43,7 +43,7 @@ const LinkBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin: 1rem;
+  margin: 0.5em;
   background: none;
 
   width: 10rem;
@@ -52,10 +52,13 @@ const LinkBox = styled.div`
   font-size: 1.3rem;
 
   background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4.5px);
   -webkit-backdrop-filter: blur(4.5px);
   border-radius: 10px;
+
+  @media (min-width: 768px) {
+    margin: 1rem;
+  }
 `;
 
 const SignBox = styled.div``;

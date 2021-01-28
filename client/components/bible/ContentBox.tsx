@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import { useStore } from "../../stores/StoreProvider";
@@ -28,11 +28,7 @@ const ContentBox = observer(() => {
   const to = store.bibleStore.curr_verse;
   const { curr_chapter } = store.bibleStore;
 
-  const containerRef = useRef<HTMLDivElement>();
-
   useEffect(() => {
-    const container = containerRef.current;
-    container.scrollTo(0, 0);
     window.scrollTo(0, 0);
 
     return () => {};
@@ -56,19 +52,17 @@ const ContentBox = observer(() => {
         target.style.backgroundColor = "rgba(0,0,0,0)";
       }, 2000);
     }
-
-    window.scrollTo(0, 0);
     return () => {};
   }, [to]);
 
   const renderBible = () => {
-    const verses = toJS(store?.bibleStore?.curr_bible);
+    const verses = toJS(store.bibleStore.curr_bible);
     const remainder = Math.ceil(verses.length / 2) - 1;
     const arr1 = verses.slice(0, -remainder);
     const arr2 = verses.slice(-remainder);
 
     return (
-      <Container ref={containerRef} id={"contentCtn"}>
+      <Container>
         <StyledContentBox>
           {arr1?.map((item) => {
             return (

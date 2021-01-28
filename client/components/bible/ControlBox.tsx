@@ -6,7 +6,7 @@ import styled from "styled-components";
 const StyledControlBox = styled.div`
   position: sticky;
   bottom: 0.5rem;
-  padding: 0.3rem;
+  padding: 0.2rem 1.1rem;
 
   width: 100%;
   display: flex;
@@ -27,7 +27,11 @@ const CircleButton = styled.button`
   border: 0;
   outline: 0;
   background: none;
-  opacity: 0.7;
+  opacity: 1;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 
   &: hover {
     cursor: pointer;
@@ -92,8 +96,6 @@ const ControlBox = () => {
         id="topButton"
         type="button"
         onClick={() => {
-          const contentCtn = document.getElementById("contentCtn");
-          contentCtn.scrollTo(0, 0);
           window.scrollTo(0, 0);
         }}
       ></TopBtn>
