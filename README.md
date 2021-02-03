@@ -1,10 +1,10 @@
 # Bible App
 
-- jenkins auto deploy with github webhooks.
-- nginx server
-- reverse proxied express server
+- This app is hosted on Vercel
+  [Histime](https://histime.ga)
 
-## Stack
+## Libraries
 
-- next js
-- styled-components
+- Next js
+- Styled-components
+- Mongoose
