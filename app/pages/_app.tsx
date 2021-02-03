@@ -4,7 +4,7 @@ import { useDarkMode } from "../hooks/useDarkMode";
 import { lightTheme, darkTheme } from "../styles/theme";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/global-styles";
-import Layout from "../components/basics/Layout";
+import Layout from "../components/layout";
 import { AppProps } from "next/app";
 
 function App({ Component, pageProps }: AppProps) {

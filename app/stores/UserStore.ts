@@ -11,7 +11,6 @@ export default class UserStore {
     makeAutoObservable(this);
     this.invitation_code = "";
     this.isAuth = null;
-    this.requestAuth();
 
     // reactions
     autorun(() => {
@@ -40,11 +39,13 @@ export default class UserStore {
       runInAction(() => {
         this.isAuth = result.data.success;
       });
+      return true;
     } catch (error) {
       runInAction(() => {
         console.log(error)
         this.isAuth = error.response.data.success;
       });
+      return false;
     }
   }
 }

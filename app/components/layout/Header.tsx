@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DarkModeToggleButton from "./DarkModeToggleButton";
+import DarkModeToggleButton from "../common/DarkModeToggleButton";
 import AuthComponent from "./AuthComponent";
 import styled from "styled-components";
 

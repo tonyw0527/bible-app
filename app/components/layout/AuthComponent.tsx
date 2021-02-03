@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { observer } from "mobx-react";
 import { useStore } from "../../stores/StoreProvider";
+import { usePopUp } from "../../hooks/usePopUp";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -25,6 +26,19 @@ const AuthComponent = observer(() => {
   const { curr_book, curr_chapter } = store.bibleStore;
   const invicodeInputRef = useRef<HTMLInputElement>();
   const authSpanRef = useRef<HTMLSpanElement>();
+  const [isPopUp, togglePopUp, renderPopUp] = usePopUp();
+  const [
+    isGreetingPopUp,
+    toggleGreetingPopUp,
+    renderGreetingPopUp,
+  ] = usePopUp();
+
+  useEffect(() => {
+    store.userStore.requestAuth().then((res) => {
+      toggleGreetingPopUp(res);
+    });
+    return () => {};
+  }, []);
 
   useEffect(() => {
     if (isAuth) {
@@ -42,6 +56,13 @@ const AuthComponent = observer(() => {
 
   return (
     <>
+      {renderGreetingPopUp(
+        "info",
+        "환영합니다!",
+        "초대코드를 입력해주세요.",
+        "확인"
+      )}
+      {renderPopUp("", "인증 오류", "초대코드를 다시 입력해주세요.", "확인")}
       <Input
         ref={invicodeInputRef}
         type="text"
@@ -51,12 +72,10 @@ const AuthComponent = observer(() => {
         }}
         onKeyPress={(e) => {
           if (e.code === "Enter") {
-            store.userStore.requestAuth();
+            store.userStore.requestAuth().then((res) => {
+              togglePopUp(res);
+            });
           }
-        }}
-        onBlur={() => {
-          console.log("d");
-          store.userStore.requestAuth();
         }}
         placeholder="초대코드"
       />

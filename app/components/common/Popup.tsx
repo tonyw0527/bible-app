@@ -1,7 +1,7 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 type OverlayProps = {
+  popUpType: string;
   visible: boolean;
 };
 const Overlay = styled.div<OverlayProps>`
@@ -11,10 +11,12 @@ const Overlay = styled.div<OverlayProps>`
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: ${(props) =>
+    props.popUpType === "info" ? "none" : "rgba(0, 0, 0, 0.6)"};
   z-index: 999;
 `;
 type WrapperProps = {
+  popUpType: string;
   visible: boolean;
 };
 const Wrapper = styled.div<WrapperProps>`
@@ -54,37 +56,39 @@ const Header = styled.header`
 `;
 const H1 = styled.h1`
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
 `;
-const TopButton = styled.button`
+const Main = styled.main`
+  margin-bottom: 0.8rem;
+`;
+const Span = styled.span``;
+const Footer = styled.footer``;
+
+type ButtonProps = {
+  popUpType: string;
+};
+const Button = styled.button<ButtonProps>`
+  color: ${(props) => (props.popUpType === "info" ? "#009FE3" : "#F20505")};
+  &: hover {
+    cursor: pointer;
+  }
+`;
+const TopButton = styled(Button)`
   position: absolute;
   top: 1rem;
   right: 0;
   background: none;
   border: 0;
-
-  &: hover {
-    cursor: pointer;
-  }
 `;
-const Main = styled.main`
-  margin-bottom: 1rem;
-`;
-const Span = styled.span``;
-const Footer = styled.footer``;
-const BottomButton = styled.button`
+const BottomButton = styled(Button)`
   padding: 0.3rem;
   border: 0;
-  background: gray;
-  color: white;
-
-  &: hover {
-    cursor: pointer;
-  }
+  background: none;
 `;
 
-type PopupProps = {
+type PopUpProps = {
+  popUpType: string;
   visible: boolean;
   title: string;
   msg: string;
@@ -92,21 +96,30 @@ type PopupProps = {
   onClose: () => void;
 };
 
-function Popup({ visible, title, msg, close, onClose }: PopupProps) {
+function PopUp({ popUpType, visible, title, msg, close, onClose }: PopUpProps) {
   return (
     <>
-      <Overlay visible={visible} />
-      <Wrapper visible={visible} tabIndex={-1} onClick={onClose}>
+      <Overlay popUpType={popUpType} visible={visible} />
+      <Wrapper
+        popUpType={popUpType}
+        visible={visible}
+        tabIndex={-1}
+        onClick={onClose}
+      >
         <Section tabIndex={0}>
           <Header>
             <H1>{title}</H1>
-            <TopButton onClick={onClose}>X</TopButton>
+            {/* <TopButton popUpType={popUpType} onClick={onClose}>
+              X
+            </TopButton> */}
           </Header>
           <Main>
             <Span>{msg}</Span>
           </Main>
           <Footer>
-            <BottomButton onClick={onClose}>{close}</BottomButton>
+            <BottomButton popUpType={popUpType} onClick={onClose}>
+              {close}
+            </BottomButton>
           </Footer>
         </Section>
       </Wrapper>
@@ -114,4 +127,4 @@ function Popup({ visible, title, msg, close, onClose }: PopupProps) {
   );
 }
 
-export default Popup;
+export default PopUp;

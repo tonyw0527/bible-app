@@ -1,5 +1,5 @@
 import Head from "next/head";
-import PageNotFoundComponent from "../components/basics/PageNotFound";
+import NotFoundComponent from "../components/common/NotFound";
 
 export default function PageNotFound() {
   return (
@@ -7,7 +7,7 @@ export default function PageNotFound() {
       <Head>
         <title>404</title>
       </Head>
-      <PageNotFoundComponent />
+      <NotFoundComponent />
     </>
   );
 }
