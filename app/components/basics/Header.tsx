@@ -5,17 +5,18 @@ import { observer } from "mobx-react";
 import { useStore } from "../../stores/StoreProvider";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.header`
   display: flex;
   justify-content: start;
-  padding: 0.5rem 1.1rem;
   width: 100%;
+  padding: 0.8rem 1.1rem;
+  background: ${({ theme }) => theme.color.header};
 `;
 
 const A = styled.a`
   margin-right: 1rem;
   font-size: 1.3rem;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 
   &: hover {
     cursor: pointer;
@@ -33,7 +34,7 @@ const Input = styled.input`
 
 const Span = styled.span`
   display: none;
-  margin-top: 0.65rem;
+  margin-top: 0.44rem;
   margin-left: 1rem;
   font-size: 0.9rem;
 `;

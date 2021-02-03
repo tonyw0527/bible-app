@@ -7,6 +7,7 @@ const lightTheme: DefaultTheme = {
 
   color: {
       body: 'white',
+      header: '#e8eae6',
       text: '#363537',
       main_back: '#a0c1b8',
       main_state_text: '#ffdf91',
@@ -21,7 +22,8 @@ const darkTheme: DefaultTheme = {
   mode_img: './moon.svg',
 
   color: {
-      body: '#363537',
+      body: '#0D1117',
+      header: '#161B22',
       text: '#FAFAFA',
       main_back: '#264445',
       main_state_text: '#f7dd53',

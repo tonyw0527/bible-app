@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Header from "./Header";
-import Copyright from "./Copyright";
+import Footer from "./Footer";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -20,7 +20,7 @@ const Layout = ({ children, onToggleTheme }: LayoutProps) => (
   <Container>
     <Header onToggleTheme={onToggleTheme} />
     {children}
-    <Copyright />
+    <Footer />
   </Container>
 );
 
