@@ -16,7 +16,7 @@ const Input = styled.input`
 const Span = styled.span`
   display: none;
   margin-top: 0.44rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   font-size: 0.9rem;
 `;
 

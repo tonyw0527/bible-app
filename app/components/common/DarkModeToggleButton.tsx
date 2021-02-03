@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Container = styled.div`
   position: absolute;
   top: 0;
-  right: 1.1rem;
+  right: 1rem;
   padding-top: 0.55rem;
 
   &: hover {
