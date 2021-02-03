@@ -21,19 +21,14 @@ const Span = styled.span`
 
 const AuthComponent = observer(() => {
   const store = useStore();
-  const {
-    isAuth,
-    invitation_code,
-    updateInvitationCode,
-    requestAuth,
-  } = store.userStore;
-  const { curr_book, curr_chapter, fetchOneChapter } = store.bibleStore;
+  const { isAuth, invitation_code } = store.userStore;
+  const { curr_book, curr_chapter } = store.bibleStore;
   const invicodeInputRef = useRef<HTMLInputElement>();
   const authSpanRef = useRef<HTMLSpanElement>();
 
   useEffect(() => {
     if (isAuth) {
-      fetchOneChapter(curr_book, curr_chapter);
+      store.bibleStore.fetchOneChapter(curr_book, curr_chapter);
 
       invicodeInputRef.current.style.display = "none";
       authSpanRef.current.style.display = "block";
@@ -52,10 +47,16 @@ const AuthComponent = observer(() => {
         type="text"
         value={invitation_code}
         onChange={(e) => {
-          updateInvitationCode(e.target.value);
+          store.userStore.updateInvitationCode(e.target.value);
+        }}
+        onKeyPress={(e) => {
+          if (e.code === "Enter") {
+            store.userStore.requestAuth();
+          }
         }}
         onBlur={() => {
-          requestAuth();
+          console.log("d");
+          store.userStore.requestAuth();
         }}
         placeholder="초대코드"
       />

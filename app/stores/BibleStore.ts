@@ -5,12 +5,12 @@ import bibleIndex from '../utils/bibleIndex';
 
 export default class BibleStore {
   // states
-  test_text: string = "gogo";
-  curr_book: number = 1;
-  curr_chapter: number = 1;
-  curr_verse: number = 1;
+  test_text: string;
+  curr_book: number;
+  curr_chapter: number;
+  curr_verse: number;
 
-  curr_bible: Array<any> = [];
+  curr_bible: Array<any>;
 
   curr_book_name: string| number| undefined = '';
   curr_book_max_chapter: string| number| undefined = 0;
@@ -35,7 +35,7 @@ export default class BibleStore {
     this.curr_book = Number(Cookies.get('book'));
     this.curr_chapter = Number(Cookies.get('chapter'));
     this.curr_verse = Number(Cookies.get('verse'));
-    this.fetchOneChapter(this.curr_book, this.curr_chapter);
+    this.curr_bible = [];
 
     // reactions
     autorun(() => {
@@ -58,6 +58,7 @@ export default class BibleStore {
       },
       withCredentials: true
     });
+    console.log(result.data);
 
     runInAction(() => {
       this.curr_bible = result.data;
