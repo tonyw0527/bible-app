@@ -6,7 +6,13 @@ export const usePopUp = (
 ): [
   boolean,
   (flag: boolean) => void,
-  (popUpType: string, title: string, msg: string, close: string) => JSX.Element
+  (
+    popUpType: string,
+    title: string,
+    msg: string,
+    close: string,
+    cb: () => void
+  ) => JSX.Element
 ] => {
   const [isPopUp, setIsPopUp] = useState<boolean>(false);
 
@@ -14,16 +20,18 @@ export const usePopUp = (
     flag ? setIsPopUp(false) : setIsPopUp(true);
   };
 
-  const onClose = () => {
-    setIsPopUp(false);
-  };
-
   const renderPopUp = (
     popUpType: string,
     title: string,
     msg: string,
-    close: string
+    close: string,
+    cb: () => void
   ) => {
+    const onClose = () => {
+      setIsPopUp(false);
+      cb();
+    };
+
     return (
       <PopUp
         popUpType={popUpType}

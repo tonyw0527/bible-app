@@ -20,12 +20,17 @@ const Span = styled.span`
   font-size: 0.9rem;
 `;
 
+// a component For imiation of auth & login form
+
 const AuthComponent = observer(() => {
   const store = useStore();
   const { isAuth, invitation_code } = store.userStore;
   const { curr_book, curr_chapter } = store.bibleStore;
+
   const invicodeInputRef = useRef<HTMLInputElement>();
   const authSpanRef = useRef<HTMLSpanElement>();
+
+  // alert pop-ups
   const [isPopUp, togglePopUp, renderPopUp] = usePopUp();
   const [
     isGreetingPopUp,
@@ -34,6 +39,7 @@ const AuthComponent = observer(() => {
   ] = usePopUp();
 
   useEffect(() => {
+    // try login in init time.
     store.userStore.requestAuth().then((res) => {
       toggleGreetingPopUp(res);
     });
@@ -60,9 +66,21 @@ const AuthComponent = observer(() => {
         "info",
         "환영합니다!",
         "초대코드를 입력해주세요.",
-        "확인"
+        "확인",
+        () => {
+          invicodeInputRef.current.focus();
+          console.log("환영 팝업 cb");
+        }
       )}
-      {renderPopUp("", "인증 오류", "초대코드를 다시 입력해주세요.", "확인")}
+      {renderPopUp(
+        "",
+        "인증 오류",
+        "초대코드를 다시 입력해주세요.",
+        "확인",
+        () => {
+          console.log("오류 팝업 cb");
+        }
+      )}
       <Input
         ref={invicodeInputRef}
         type="text"

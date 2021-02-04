@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 type OverlayProps = {
@@ -97,16 +98,33 @@ type PopUpProps = {
 };
 
 function PopUp({ popUpType, visible, title, msg, close, onClose }: PopUpProps) {
+  const wrapperRef = useRef<HTMLDivElement>();
+  const sectionRef = useRef<HTMLElement>();
+
+  const handleClickOutside = (e) => {
+    if (!sectionRef.current.contains(e.target)) {
+      e.preventDefault();
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    wrapperRef.current.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      wrapperRef.current.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <Overlay popUpType={popUpType} visible={visible} />
       <Wrapper
+        ref={wrapperRef}
         popUpType={popUpType}
         visible={visible}
         tabIndex={-1}
-        onClick={onClose}
       >
-        <Section tabIndex={0}>
+        <Section ref={sectionRef} tabIndex={0}>
           <Header>
             <H1>{title}</H1>
             {/* <TopButton popUpType={popUpType} onClick={onClose}>
