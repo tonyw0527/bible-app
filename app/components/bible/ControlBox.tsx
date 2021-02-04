@@ -6,7 +6,7 @@ import styled from "styled-components";
 const StyledControlBox = styled.div`
   position: sticky;
   bottom: 0.5rem;
-  padding: 0.2rem 1.1rem;
+  padding: 0.7rem 1.1rem;
 
   width: 100%;
   display: flex;
