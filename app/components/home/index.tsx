@@ -40,6 +40,7 @@ const A = styled.a`
 
 const LinkBox = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -51,14 +52,28 @@ const LinkBox = styled.div`
 
   font-size: 1.3rem;
 
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4.5px);
-  -webkit-backdrop-filter: blur(4.5px);
+  background: ${({ theme }) => theme.color.header};
   border-radius: 10px;
 
   @media (min-width: 768px) {
     margin: 1rem;
   }
+`;
+type Iprops = {
+  source: string;
+};
+const I = styled.i<Iprops>`
+  width: 3rem;
+  height: 3rem;
+  margin-top: 1rem;
+  background-position: center;
+  background-image: url(${(props) => props.source});
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: transparent;
+`;
+const Span = styled.span`
+  display: none;
 `;
 
 const SignBox = styled.div``;
@@ -74,13 +89,23 @@ export default function Home() {
       <DescBox>
         <Link href="/bible">
           <A>
-            <LinkBox>성경 읽기</LinkBox>
+            <LinkBox>
+              성경 읽기
+              <I source="./open-bible.svg">
+                <Span>bible icon</Span>
+              </I>
+            </LinkBox>
           </A>
         </Link>
 
         <Link href="/pray-card">
           <A>
-            <LinkBox>기도 카드</LinkBox>
+            <LinkBox>
+              기도 카드
+              <I source="./pray-card.svg">
+                <Span>pray card icon</Span>
+              </I>
+            </LinkBox>
           </A>
         </Link>
       </DescBox>
