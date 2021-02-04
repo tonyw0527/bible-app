@@ -74,6 +74,9 @@ const Button = styled.button<ButtonProps>`
   &: hover {
     cursor: pointer;
   }
+  &: focus {
+    outline: 0;
+  }
 `;
 const TopButton = styled(Button)`
   position: absolute;
@@ -100,6 +103,7 @@ type PopUpProps = {
 function PopUp({ popUpType, visible, title, msg, close, onClose }: PopUpProps) {
   const wrapperRef = useRef<HTMLDivElement>();
   const sectionRef = useRef<HTMLElement>();
+  const bottomButtonRef = useRef<HTMLButtonElement>();
 
   const handleClickOutside = (e) => {
     if (!sectionRef.current.contains(e.target)) {
@@ -115,16 +119,18 @@ function PopUp({ popUpType, visible, title, msg, close, onClose }: PopUpProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (visible) {
+      bottomButtonRef.current.focus();
+    }
+    return () => {};
+  }, [visible]);
+
   return (
     <>
       <Overlay popUpType={popUpType} visible={visible} />
-      <Wrapper
-        ref={wrapperRef}
-        popUpType={popUpType}
-        visible={visible}
-        tabIndex={-1}
-      >
-        <Section ref={sectionRef} tabIndex={0}>
+      <Wrapper ref={wrapperRef} popUpType={popUpType} visible={visible}>
+        <Section tabIndex={-1} ref={sectionRef}>
           <Header>
             <H1>{title}</H1>
             {/* <TopButton popUpType={popUpType} onClick={onClose}>
@@ -135,7 +141,12 @@ function PopUp({ popUpType, visible, title, msg, close, onClose }: PopUpProps) {
             <Span>{msg}</Span>
           </Main>
           <Footer>
-            <BottomButton popUpType={popUpType} onClick={onClose}>
+            <BottomButton
+              ref={bottomButtonRef}
+              tabIndex={0}
+              popUpType={popUpType}
+              onClick={onClose}
+            >
               {close}
             </BottomButton>
           </Footer>

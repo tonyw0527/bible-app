@@ -78,6 +78,7 @@ const AuthComponent = observer(() => {
         "초대코드를 다시 입력해주세요.",
         "확인",
         () => {
+          invicodeInputRef.current.focus();
           console.log("오류 팝업 cb");
         }
       )}
