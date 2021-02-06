@@ -34,12 +34,14 @@ const VersionBtnBox = styled.div`
   right: 0.3rem;
 `;
 const VersionButton = styled.button`
+  margin-right: 0.3rem;
   border: none;
   color: inherit;
   background: none;
+  font-size: 0.8rem;
 
-  &: first-child {
-    margin-right: 0.3rem;
+  &: last-child {
+    margin-right: 0rem;
   }
 
   &: hover {
@@ -119,12 +121,25 @@ const Quick = observer(() => {
   }, []);
 
   useEffect(() => {
-    if (ver === "gae") {
-      document.getElementById("ko").style.backgroundColor = "yellowGreen";
-      document.getElementById("en").style.backgroundColor = "transparent";
-    } else {
-      document.getElementById("ko").style.backgroundColor = "transparent";
-      document.getElementById("en").style.backgroundColor = "yellowGreen";
+    switch (ver) {
+      case "gae":
+        document.getElementById("gae").style.backgroundColor = "yellowGreen";
+        document.getElementById("niv").style.backgroundColor = "transparent";
+        document.getElementById("saenew").style.backgroundColor = "transparent";
+        break;
+      case "niv":
+        document.getElementById("gae").style.backgroundColor = "transparent";
+        document.getElementById("niv").style.backgroundColor = "yellowGreen";
+        document.getElementById("saenew").style.backgroundColor = "transparent";
+        break;
+      case "saenew":
+        document.getElementById("gae").style.backgroundColor = "transparent";
+        document.getElementById("niv").style.backgroundColor = "transparent";
+        document.getElementById("saenew").style.backgroundColor = "yellowGreen";
+        break;
+      default:
+        console.log("switch error");
+        break;
     }
     return () => {};
   }, [ver]);
@@ -251,20 +266,28 @@ const Quick = observer(() => {
         <TitleSpan>빠른 검색</TitleSpan>
         <VersionBtnBox>
           <VersionButton
-            id="ko"
+            id="gae"
             onClick={() => {
               handleVersionBtn("gae");
             }}
           >
-            KO
+            GAE
           </VersionButton>
           <VersionButton
-            id="en"
+            id="niv"
             onClick={() => {
               handleVersionBtn("niv");
             }}
           >
-            EN
+            NIV
+          </VersionButton>
+          <VersionButton
+            id="saenew"
+            onClick={() => {
+              handleVersionBtn("saenew");
+            }}
+          >
+            SAE
           </VersionButton>
         </VersionBtnBox>
       </TitleBox>

@@ -74,10 +74,20 @@ export default class BibleStore {
   async fetchOneChapter(book: number, chapter: number) {
     let api = '';
     
-    if(this.bible_version === 'gae') {
-      api = '/api/bible'
-    } else {
-      api = '/api/niv-bible'
+    const ver = this.bible_version
+    switch(ver) {
+      case 'gae':
+        api = '/api/bible';
+        break;
+      case 'niv':
+        api = '/api/niv-bible';
+        break;
+      case 'saenew':
+        api = '/api/saenew-bible';
+        break;
+      default:
+        console.log('switch error');
+        break;
     }
 
     this.isFetching = true;
