@@ -3,8 +3,10 @@ import lottie from "lottie-web";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 100%;
-  height: 80vh;
+  margin-top: 2.5rem;
+
+  width: 30rem;
+  height: 30rem;
 `;
 
 function Loading() {

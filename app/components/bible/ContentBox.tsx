@@ -8,6 +8,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100vw;
+  min-height: 100vh;
   padding: 0.8rem 0.8rem;
 
   word-break: keep-all;
@@ -20,6 +21,14 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: space-around;
   }
+`;
+
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  width: 100vw;
+  height: 100vh;
 `;
 
 const StyledContentBox = styled.div``;
@@ -65,9 +74,9 @@ const ContentBox = observer(() => {
 
     if (isFetching) {
       return (
-        <Container>
+        <LoadingContainer>
           <Loading />
-        </Container>
+        </LoadingContainer>
       );
     }
 
