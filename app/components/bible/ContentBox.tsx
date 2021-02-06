@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import { useStore } from "../../stores/StoreProvider";
+import Loading from "./Loading";
 import VerseBox from "./VerseBox";
 import styled from "styled-components";
 
@@ -26,6 +27,7 @@ const StyledContentBox = styled.div``;
 const ContentBox = observer(() => {
   const store = useStore();
   const to = store.bibleStore.curr_verse;
+  const dataLength = store.bibleStore.lengthOfBible;
   const { curr_chapter } = store.bibleStore;
 
   useEffect(() => {
@@ -61,6 +63,14 @@ const ContentBox = observer(() => {
     const arr1 = verses.slice(0, -remainder);
     const arr2 = verses.slice(-remainder);
 
+    if (dataLength === 0) {
+      return (
+        <Container>
+          <Loading />
+        </Container>
+      );
+    }
+
     return (
       <Container>
         <StyledContentBox>
@@ -88,6 +98,7 @@ const ContentBox = observer(() => {
       </Container>
     );
   };
+
   return renderBible();
 });
 

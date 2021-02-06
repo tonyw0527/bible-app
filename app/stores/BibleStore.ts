@@ -13,7 +13,7 @@ export default class BibleStore {
   curr_bible: Array<any>;
   bible_version: string;
 
-  curr_book_name: string| number| undefined = '';
+  curr_book_name: string| number;
   curr_book_max_chapter: string| number| undefined = 0;
 
   constructor() {
@@ -43,6 +43,8 @@ export default class BibleStore {
       window.localStorage.setItem('ver', 'gae');
     }
     this.bible_version = ver || 'gae';
+
+    this.curr_book_name = bibleIndex[this.curr_book][0];
 
     // reactions
     autorun(() => {
