@@ -11,6 +11,7 @@ export default class BibleStore {
   curr_verse: number;
 
   curr_bible: Array<any>;
+  isFetching: boolean;
   bible_version: string;
 
   curr_book_name: string| number;
@@ -37,6 +38,7 @@ export default class BibleStore {
     this.curr_chapter = Number(Cookies.get('chapter'));
     this.curr_verse = Number(Cookies.get('verse'));
     this.curr_bible = [];
+    this.isFetching = false;
 
     const ver = window.localStorage.getItem('ver');
     if(!ver) {
@@ -53,6 +55,10 @@ export default class BibleStore {
 
     autorun(() => {
       console.log("bible version - ", this.bible_version);
+    });
+
+    autorun(() => {
+      console.log("is fetching - ", this.isFetching);
     });
   }
 
@@ -74,6 +80,7 @@ export default class BibleStore {
       api = '/api/niv-bible'
     }
 
+    this.isFetching = true;
     const result = await axios.get(
       api,
     {
@@ -92,6 +99,7 @@ export default class BibleStore {
       //this.curr_verse = 1;
       this.curr_book_name = bibleIndex[book][0];
       this.curr_book_max_chapter = bibleIndex[book][1];
+      this.isFetching = false;
     });
   }
 

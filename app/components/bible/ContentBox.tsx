@@ -27,7 +27,7 @@ const StyledContentBox = styled.div``;
 const ContentBox = observer(() => {
   const store = useStore();
   const to = store.bibleStore.curr_verse;
-  const dataLength = store.bibleStore.lengthOfBible;
+  const { isFetching } = store.bibleStore;
   const { curr_chapter } = store.bibleStore;
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const ContentBox = observer(() => {
     const arr1 = verses.slice(0, -remainder);
     const arr2 = verses.slice(-remainder);
 
-    if (dataLength === 0) {
+    if (isFetching) {
       return (
         <Container>
           <Loading />
