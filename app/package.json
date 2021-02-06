@@ -12,6 +12,7 @@
     "cookie": "^0.4.1",
     "html2canvas": "^1.0.0-rc.7",
     "js-cookie": "^2.2.1",
+    "lottie-web": "^5.7.6",
     "mobx": "^6.1.4",
     "mobx-react": "^7.1.0",
     "mongoose": "^5.11.12",
