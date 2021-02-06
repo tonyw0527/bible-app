@@ -145,7 +145,7 @@ const Quick = observer(() => {
             id={"chapter" + i}
             key={"chapter" + i}
             onClick={(e) => {
-              store?.bibleStore.fetchOneChapter(bookIndex, i);
+              store?.bibleStore.fetchOneChapter("niv", bookIndex, i);
 
               if (searchState.chapter) {
                 const id = "chapter" + searchState.chapter;

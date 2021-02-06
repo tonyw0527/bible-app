@@ -48,9 +48,17 @@ export default class BibleStore {
     this.curr_verse = verse;
   }
 
-  async fetchOneChapter(book: number, chapter: number) {
+  async fetchOneChapter(version:string, book: number, chapter: number) {
+    let api = '';
+    
+    if(version === 'gae') {
+      api = '/api/bible'
+    } else {
+      api = '/api/niv-bible'
+    }
+
     const result = await axios.get(
-      `/api/bible`,
+      api,
     {
       params: {
         book: book,

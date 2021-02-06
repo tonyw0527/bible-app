@@ -48,7 +48,7 @@ const AuthComponent = observer(() => {
 
   useEffect(() => {
     if (isAuth) {
-      store.bibleStore.fetchOneChapter(curr_book, curr_chapter);
+      store.bibleStore.fetchOneChapter("niv", curr_book, curr_chapter);
 
       invicodeInputRef.current.style.display = "none";
       authSpanRef.current.style.display = "block";
