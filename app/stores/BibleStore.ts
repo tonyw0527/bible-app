@@ -11,6 +11,7 @@ export default class BibleStore {
   curr_verse: number;
 
   curr_bible: Array<any>;
+  bible_version: string;
 
   curr_book_name: string| number| undefined = '';
   curr_book_max_chapter: string| number| undefined = 0;
@@ -37,9 +38,19 @@ export default class BibleStore {
     this.curr_verse = Number(Cookies.get('verse'));
     this.curr_bible = [];
 
+    const ver = window.localStorage.getItem('ver');
+    if(!ver) {
+      window.localStorage.setItem('ver', 'gae');
+    }
+    this.bible_version = ver || 'gae';
+
     // reactions
     autorun(() => {
       console.log("Bible Data Fetching - ", this.curr_bible);
+    });
+
+    autorun(() => {
+      console.log("bible version - ", this.bible_version);
     });
   }
 
@@ -48,10 +59,14 @@ export default class BibleStore {
     this.curr_verse = verse;
   }
 
-  async fetchOneChapter(version:string, book: number, chapter: number) {
+  updateBibleVersion(ver: string) {
+    this.bible_version = ver;
+  }
+
+  async fetchOneChapter(book: number, chapter: number) {
     let api = '';
     
-    if(version === 'gae') {
+    if(this.bible_version === 'gae') {
       api = '/api/bible'
     } else {
       api = '/api/niv-bible'

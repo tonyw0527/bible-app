@@ -15,13 +15,36 @@ const Container = styled.div`
   overflow-x: hidden;
 `;
 
-const TitleBox = styled.div``;
+const TitleBox = styled.div`
+  position: relative;
+  width: 100%;
+  text-align: center;
+`;
 
 const TitleSpan = styled.span`
   display: block;
   margin: 1rem;
   font-size: 1.3rem;
   font-weight: 700;
+`;
+
+const VersionBtnBox = styled.div`
+  position: absolute;
+  top: 1.3rem;
+  right: 0.3rem;
+`;
+const VersionButton = styled.button`
+  border: none;
+  color: inherit;
+  background: none;
+
+  &: first-child {
+    margin-right: 0.3rem;
+  }
+
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 const CategoryWrapper = styled.div`
@@ -63,6 +86,7 @@ type SearchState = {
 const Quick = observer(() => {
   const router = useRouter();
   const store = useStore();
+  const ver = store.bibleStore.bible_version;
 
   const [searchState, setSearchState] = useState<SearchState>({
     book: Number(Cookies.get("book")),
@@ -90,12 +114,30 @@ const Quick = observer(() => {
     curr_chapter.style.backgroundColor = "yellowGreen";
 
     window.scrollTo(0, 0);
+
     return () => {};
   }, []);
 
   useEffect(() => {
+    if (ver === "gae") {
+      document.getElementById("ko").style.backgroundColor = "yellowGreen";
+      document.getElementById("en").style.backgroundColor = "transparent";
+    } else {
+      document.getElementById("ko").style.backgroundColor = "transparent";
+      document.getElementById("en").style.backgroundColor = "yellowGreen";
+    }
+    return () => {};
+  }, [ver]);
+
+  useEffect(() => {
     console.log("serch state - ", searchState);
   }, [searchState]);
+
+  const handleVersionBtn = (ver: string) => {
+    store.bibleStore.updateBibleVersion(ver);
+    window.localStorage.setItem("ver", ver);
+    store.bibleStore.fetchOneChapter(searchState.book, searchState.chapter);
+  };
 
   const renderCategory1 = () => {
     const books = [];
@@ -145,7 +187,7 @@ const Quick = observer(() => {
             id={"chapter" + i}
             key={"chapter" + i}
             onClick={(e) => {
-              store?.bibleStore.fetchOneChapter("niv", bookIndex, i);
+              store?.bibleStore.fetchOneChapter(bookIndex, i);
 
               if (searchState.chapter) {
                 const id = "chapter" + searchState.chapter;
@@ -207,6 +249,24 @@ const Quick = observer(() => {
     <Container>
       <TitleBox>
         <TitleSpan>빠른 검색</TitleSpan>
+        <VersionBtnBox>
+          <VersionButton
+            id="ko"
+            onClick={() => {
+              handleVersionBtn("gae");
+            }}
+          >
+            KO
+          </VersionButton>
+          <VersionButton
+            id="en"
+            onClick={() => {
+              handleVersionBtn("niv");
+            }}
+          >
+            EN
+          </VersionButton>
+        </VersionBtnBox>
       </TitleBox>
       <CategoryWrapper>
         <CategoryBox id="bookCtn">
