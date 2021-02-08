@@ -1,4 +1,4 @@
-// get method
+// 쿠키값을 통한 간단한 인증 route
 export default (req, res) => {
   const { invicode } = req.cookies;
 

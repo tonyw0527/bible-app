@@ -10,7 +10,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
-const ImgWrapper = styled.div``;
 const H1 = styled.h1`
   text-align: center;
 `;
@@ -50,7 +49,6 @@ function PageNotFound() {
     <Container>
       <Image src="/404.svg" alt="Page Not Found" width={200} height={200} />
       <H2>404</H2>
-      {/* <H1>Page Not Found</H1> */}
       <H1>페이지를 찾을 수 없습니다.</H1>
       <P>페이지가 삭제되었거나 주소가 변경되었을 수 있습니다.</P>
       <ButtonsWrapper>

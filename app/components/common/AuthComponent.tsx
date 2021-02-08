@@ -38,6 +38,12 @@ const AuthComponent = observer(() => {
     renderGreetingPopUp,
   ] = usePopUp();
 
+  const handleKeyPressAndBlur = () => {
+    store.userStore.requestAuth().then((res) => {
+      togglePopUp(res);
+    });
+  };
+
   useEffect(() => {
     // try login in init time.
     store.userStore.requestAuth().then((res) => {
@@ -91,11 +97,10 @@ const AuthComponent = observer(() => {
         }}
         onKeyPress={(e) => {
           if (e.code === "Enter") {
-            store.userStore.requestAuth().then((res) => {
-              togglePopUp(res);
-            });
+            handleKeyPressAndBlur();
           }
         }}
+        onBlur={handleKeyPressAndBlur}
         placeholder="초대코드"
       />
       <Span ref={authSpanRef}></Span>

@@ -69,6 +69,7 @@ type ListItemProps = {
   onSetContent: Dispatch<SetStateAction<Content>>;
 };
 
+// ListItem 컴포넌트 - ContentsBox 컴포넌트 안에 동적으로 추가 되는 컴포넌트
 function ListItem({ item, index, onSetContent }: ListItemProps) {
   return (
     <Li>
@@ -103,6 +104,7 @@ type ContentsBoxProps = {
   index: number;
 };
 
+// ContentsBox 컴포넌트 - 사람 추가 버튼을 클릭할 때 Maker 컴포넌트 안에 동적으로 추가되는 컴포넌트
 function ContentsBox({ index }: ContentsBoxProps) {
   const [state, dispatch] = useCardStore();
 
@@ -166,6 +168,7 @@ function ContentsBox({ index }: ContentsBoxProps) {
   );
 }
 
+// Maker 컴포넌트
 function Maker() {
   const [state, dispatch] = useCardStore();
 
@@ -225,6 +228,7 @@ function Maker() {
         <Button type="button" onClick={addContentsBox}>
           사람 추가
         </Button>
+
         {renderContentsBox()}
 
         <Input

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import styled from "styled-components";
 
-const StyledControlBox = styled.div`
+const Container = styled.div`
   position: sticky;
   bottom: 0.5rem;
   padding: 0.7rem 1.1rem;
@@ -87,7 +87,7 @@ const ControlBox = () => {
   };
 
   return (
-    <StyledControlBox>
+    <Container>
       <HomeBtn onClick={() => router.push("/")}></HomeBtn>
       <SearchBtn onClick={() => router.push("/quick-search")}></SearchBtn>
       <LeftBtn onClick={() => handlePrevNextBtn("prev")}></LeftBtn>
@@ -99,7 +99,7 @@ const ControlBox = () => {
           window.scrollTo(0, 0);
         }}
       ></TopBtn>
-    </StyledControlBox>
+    </Container>
   );
 };
 

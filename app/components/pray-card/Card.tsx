@@ -141,17 +141,9 @@ function Card() {
         <CardImgBox>
           <CardImg id="card_img" src={state.img} alt={state.title} />
         </CardImgBox>
-
         {renderContents()}
-
         <BottomBox>
-          <BibleBox>
-            {/* {
-              "너는 하나님께 소망을 두라 그가 나타나 도우심으로 말미암아 내 하나님을 여전히 찬송하리로다"
-            }{" "}
-            <Span>{"시편 43:5"}</Span> */}
-            {state.word}
-          </BibleBox>
+          <BibleBox>{state.word}</BibleBox>
         </BottomBox>
       </CardBox>
     </Container>

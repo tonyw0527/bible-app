@@ -7,7 +7,7 @@ export const config = {
   },
 }
 
-// get method
+// 성경 데이터 fetching route
 export default (req, res) => {
   const { invicode } = req.cookies;
   dbConnect();

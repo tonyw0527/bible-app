@@ -76,9 +76,6 @@ const Span = styled.span`
   display: none;
 `;
 
-const SignBox = styled.div``;
-const SignButton = styled.button``;
-
 export default function Home() {
   return (
     <Container>
@@ -111,13 +108,6 @@ export default function Home() {
       </DescBox>
 
       <DescSpan>함께 읽어요!</DescSpan>
-
-      {/* <SignBox>
-        <SignButton onClick={() => router.push("/sign-in")}>로그인</SignButton>
-        <SignButton onClick={() => router.push("/sign-up")}>
-          회원가입
-        </SignButton>
-      </SignBox> */}
     </Container>
   );
 }

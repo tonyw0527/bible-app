@@ -13,17 +13,17 @@ function Loading() {
   const wrapperRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
+    // lottie 애니메이션 load
     lottie.loadAnimation({
-      container: wrapperRef.current, // the dom element that will contain the animation
+      container: wrapperRef.current,
       renderer: "svg",
       loop: true,
       autoplay: true,
-      path: "bible-loading.json", // the path to the animation json
+      path: "bible-loading.json",
     });
 
+    // lottie 애니메이션 play
     lottie.play();
-
-    return () => {};
   }, []);
 
   return <Wrapper ref={wrapperRef}></Wrapper>;

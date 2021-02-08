@@ -31,21 +31,20 @@ const LoadingContainer = styled.div`
   height: 100vh;
 `;
 
-const StyledContentBox = styled.div``;
-
 const ContentBox = observer(() => {
   const store = useStore();
   const to = store.bibleStore.curr_verse;
   const { isFetching } = store.bibleStore;
   const { curr_chapter } = store.bibleStore;
 
+  // 장 변경시 최상단으로 스크롤
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    return () => {};
   }, [curr_chapter]);
 
+  // quick-search 페이지에서 선택된 절을 하이라이팅
   useEffect(() => {
+    // 선택된 절을 가운데에 보여주기 위해 하나 이전의 절로 스크롤
     const prevTarget = document.getElementById("v" + String(to - 1));
     if (prevTarget === null) {
       return;
@@ -56,6 +55,7 @@ const ContentBox = observer(() => {
       inline: "nearest",
     });
 
+    // 선택된 절 하이라이팅
     const target = document.getElementById("v" + String(to));
     if (target !== null) {
       target.style.backgroundColor = "#9ad3bc";
@@ -63,15 +63,17 @@ const ContentBox = observer(() => {
         target.style.backgroundColor = "rgba(0,0,0,0)";
       }, 2000);
     }
-    return () => {};
   }, [to]);
 
+  // 선택된 장의 절들을 렌더링
   const renderBible = () => {
     const verses = toJS(store.bibleStore.curr_bible);
+    // 데스크톱 레이아웃을 위해 두 개의 블럭으로 나누어 렌더링
     const remainder = Math.ceil(verses.length / 2) - 1;
     const arr1 = verses.slice(0, -remainder);
     const arr2 = verses.slice(-remainder);
 
+    // db 데이터를 fetching 중일 때 로딩 화면(lottie) 렌더링
     if (isFetching) {
       return (
         <LoadingContainer>
@@ -82,7 +84,7 @@ const ContentBox = observer(() => {
 
     return (
       <Container>
-        <StyledContentBox>
+        <div>
           {arr1?.map((item) => {
             return (
               <VerseBox
@@ -92,8 +94,8 @@ const ContentBox = observer(() => {
               />
             );
           })}
-        </StyledContentBox>
-        <StyledContentBox>
+        </div>
+        <div>
           {arr2?.map((item) => {
             return (
               <VerseBox
@@ -103,7 +105,7 @@ const ContentBox = observer(() => {
               />
             );
           })}
-        </StyledContentBox>
+        </div>
       </Container>
     );
   };

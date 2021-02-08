@@ -73,7 +73,7 @@ const Quick = observer(() => {
     chapter: Number(Cookies.get("chapter")),
   });
 
-  // init - selecting curr_book, curr_chapter
+  // 페이지 진입시 이전에 선택된 책, 장, 절을 하이라이팅 해줌
   useEffect(() => {
     const prev_book = searchState.book;
     const prev_chapter = searchState.chapter;

@@ -3,14 +3,14 @@ import { observer } from "mobx-react";
 
 import styled from "styled-components";
 
-const StyledStateBox = styled.div`
+const Container = styled.div`
   width: 100%;
   height: 7vh;
   background: ${({ theme }) => theme.color.main_back};
   text-align: center;
 `;
 
-const StyledStateSpan = styled.span`
+const StateSpan = styled.span`
   display: block;
   margin-top: 0.65rem;
   font-weight: 700;
@@ -22,9 +22,9 @@ const StateBox = observer(() => {
   const store = useStore();
 
   return (
-    <StyledStateBox>
-      <StyledStateSpan>{`${store?.bibleStore.curr_book_name} ${store?.bibleStore.curr_chapter}장`}</StyledStateSpan>
-    </StyledStateBox>
+    <Container>
+      <StateSpan>{`${store?.bibleStore.curr_book_name} ${store?.bibleStore.curr_chapter}장`}</StateSpan>
+    </Container>
   );
 });
 
