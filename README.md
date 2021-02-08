@@ -1,6 +1,6 @@
 # Bible App
 
-- 성경을 웹에서 쉽게 읽을 수 있도록 제작한 웹앱입니다. [성경 앱 바로가기](https://bible-app-git-main.tonyw0527.vercel.app/) (초대코드: love)
+- 성경을 웹에서 쉽게 읽을 수 있도록 제작한 웹앱입니다. [성경 앱 바로가기](https://bible-app-git-main.tonyw0527.vercel.app/) (초대코드: bible)
 - 모바일과 데스크탑 모두 쉽게 읽을 수 있도록 CSS flex 속성을 이용해 반응형 레이아웃을 지원합니다.
 - 다크모드를 지원합니다.
 
@@ -47,4 +47,3 @@
 ## Info
 
 - next.js를 사용하였지만 아직 Server-side rendering 구현이 미흡합니다.
-- Pray-card 컴포넌트 업데이트 예정입니다.
