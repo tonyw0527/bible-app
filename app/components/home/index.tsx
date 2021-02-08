@@ -91,7 +91,7 @@ export default function Home() {
           <A>
             <LinkBox>
               성경 읽기
-              <I source="./open-bible.svg">
+              <I source="./icons/home/open-bible.svg">
                 <Span>bible icon</Span>
               </I>
             </LinkBox>
@@ -102,7 +102,7 @@ export default function Home() {
           <A>
             <LinkBox>
               기도 카드
-              <I source="./pray-card.svg">
+              <I source="./icons/home/pray-card.svg">
                 <Span>pray card icon</Span>
               </I>
             </LinkBox>

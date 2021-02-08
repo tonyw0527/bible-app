@@ -3,7 +3,7 @@ import { DefaultTheme } from 'styled-components';
 // lightTheme
 const lightTheme: DefaultTheme = {
   mode: 'light',
-  mode_img: './sun.svg',
+  mode_img: './icons/darkmode/sun.svg',
 
   color: {
       body: 'white',
@@ -19,7 +19,7 @@ const lightTheme: DefaultTheme = {
 // darkTheme
 const darkTheme: DefaultTheme = {
   mode: 'dark',
-  mode_img: './moon.svg',
+  mode_img: './icons/darkmode/moon.svg',
 
   color: {
       body: '#0D1117',

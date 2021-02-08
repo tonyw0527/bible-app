@@ -39,19 +39,19 @@ const CircleButton = styled.button`
 `;
 
 const HomeBtn = styled(CircleButton)`
-  background-image: url("./home.svg");
+  background-image: url("./icons/bible/home.svg");
 `;
 const SearchBtn = styled(CircleButton)`
-  background-image: url("./search.svg");
+  background-image: url("./icons/bible/search.svg");
 `;
 const LeftBtn = styled(CircleButton)`
-  background-image: url("./left.svg");
+  background-image: url("./icons/bible/left.svg");
 `;
 const RightBtn = styled(CircleButton)`
-  background-image: url("./right.svg");
+  background-image: url("./icons/bible/right.svg");
 `;
 const TopBtn = styled(CircleButton)`
-  background-image: url("./chevron.svg");
+  background-image: url("./icons/bible/chevron.svg");
 `;
 
 const ControlBox = () => {
