@@ -4,10 +4,10 @@
 - 모바일과 데스크탑 모두 쉽게 읽을 수 있도록 CSS flex 속성을 이용해 반응형 레이아웃을 지원합니다.
 - 다크모드를 지원합니다.
 
-## Libraries
+## Tech Stack
 
 - Typescript
-- Next js
+- Next.js
 - Mobx
 - Styled-components
 - Mongoose
