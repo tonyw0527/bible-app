@@ -1,6 +1,6 @@
 import Link from "next/link";
 import DarkModeToggleButton from "../common/DarkModeToggleButton";
-import AuthComponent from "./AuthComponent";
+import AuthComponent from "../common/AuthComponent";
 import styled from "styled-components";
 
 const Container = styled.header`

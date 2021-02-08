@@ -28,27 +28,6 @@ const TitleSpan = styled.span`
   font-weight: 700;
 `;
 
-const VersionBtnBox = styled.div`
-  position: absolute;
-  top: 1.3rem;
-  right: 0.3rem;
-`;
-const VersionButton = styled.button`
-  margin-right: 0.3rem;
-  border: none;
-  color: inherit;
-  background: none;
-  font-size: 0.8rem;
-
-  &: last-child {
-    margin-right: 0rem;
-  }
-
-  &: hover {
-    cursor: pointer;
-  }
-`;
-
 const CategoryWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -88,7 +67,6 @@ type SearchState = {
 const Quick = observer(() => {
   const router = useRouter();
   const store = useStore();
-  const ver = store.bibleStore.bible_version;
 
   const [searchState, setSearchState] = useState<SearchState>({
     book: Number(Cookies.get("book")),
@@ -121,38 +99,8 @@ const Quick = observer(() => {
   }, []);
 
   useEffect(() => {
-    switch (ver) {
-      case "gae":
-        document.getElementById("gae").style.backgroundColor = "yellowGreen";
-        document.getElementById("niv").style.backgroundColor = "transparent";
-        document.getElementById("saenew").style.backgroundColor = "transparent";
-        break;
-      case "niv":
-        document.getElementById("gae").style.backgroundColor = "transparent";
-        document.getElementById("niv").style.backgroundColor = "yellowGreen";
-        document.getElementById("saenew").style.backgroundColor = "transparent";
-        break;
-      case "saenew":
-        document.getElementById("gae").style.backgroundColor = "transparent";
-        document.getElementById("niv").style.backgroundColor = "transparent";
-        document.getElementById("saenew").style.backgroundColor = "yellowGreen";
-        break;
-      default:
-        console.log("switch error");
-        break;
-    }
-    return () => {};
-  }, [ver]);
-
-  useEffect(() => {
     console.log("serch state - ", searchState);
   }, [searchState]);
-
-  const handleVersionBtn = (ver: string) => {
-    store.bibleStore.updateBibleVersion(ver);
-    window.localStorage.setItem("ver", ver);
-    store.bibleStore.fetchOneChapter(searchState.book, searchState.chapter);
-  };
 
   const renderCategory1 = () => {
     const books = [];
@@ -264,32 +212,6 @@ const Quick = observer(() => {
     <Container>
       <TitleBox>
         <TitleSpan>빠른 검색</TitleSpan>
-        <VersionBtnBox>
-          <VersionButton
-            id="gae"
-            onClick={() => {
-              handleVersionBtn("gae");
-            }}
-          >
-            GAE
-          </VersionButton>
-          <VersionButton
-            id="niv"
-            onClick={() => {
-              handleVersionBtn("niv");
-            }}
-          >
-            NIV
-          </VersionButton>
-          <VersionButton
-            id="saenew"
-            onClick={() => {
-              handleVersionBtn("saenew");
-            }}
-          >
-            SAE
-          </VersionButton>
-        </VersionBtnBox>
       </TitleBox>
       <CategoryWrapper>
         <CategoryBox id="bookCtn">

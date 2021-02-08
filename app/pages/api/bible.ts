@@ -1,5 +1,5 @@
 import dbConnect from '../../utils/dbConnect';
-import bookModel from '../../models/Book';
+import hanBookModel from '../../models/HanBook';
 
 export const config = {
   api: {
@@ -18,7 +18,7 @@ export default (req, res) => {
     return;
   }
     console.log('query', book, chapter);
-    bookModel.find({$and:[{ book: book },{chapter: chapter}]}).sort({ verse: 1}).exec((err, data) => {
+    hanBookModel.find({$and:[{ book: book },{chapter: chapter}]}).sort({ verse: 1}).exec((err, data) => {
         if(err){
             res.status(400).json({ success: false, msg: "db query error." })
             return;

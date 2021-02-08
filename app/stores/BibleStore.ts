@@ -1,4 +1,4 @@
-import { toJS, runInAction, autorun, makeAutoObservable } from 'mobx';
+import { runInAction, autorun, makeAutoObservable } from 'mobx';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import bibleIndex from '../utils/bibleIndex';
@@ -12,7 +12,6 @@ export default class BibleStore {
 
   curr_bible: Array<any>;
   isFetching: boolean;
-  bible_version: string;
 
   curr_book_name: string| number;
   curr_book_max_chapter: string| number| undefined = 0;
@@ -40,21 +39,11 @@ export default class BibleStore {
     this.curr_bible = [];
     this.isFetching = false;
 
-    const ver = window.localStorage.getItem('ver');
-    if(!ver) {
-      window.localStorage.setItem('ver', 'gae');
-    }
-    this.bible_version = ver || 'gae';
-
     this.curr_book_name = bibleIndex[this.curr_book][0];
 
     // reactions
     autorun(() => {
       console.log("Bible Data Fetching - ", this.curr_bible);
-    });
-
-    autorun(() => {
-      console.log("bible version - ", this.bible_version);
     });
 
     autorun(() => {
@@ -67,28 +56,8 @@ export default class BibleStore {
     this.curr_verse = verse;
   }
 
-  updateBibleVersion(ver: string) {
-    this.bible_version = ver;
-  }
-
   async fetchOneChapter(book: number, chapter: number) {
-    let api = '';
-    
-    const ver = this.bible_version
-    switch(ver) {
-      case 'gae':
-        api = '/api/bible';
-        break;
-      case 'niv':
-        api = '/api/niv-bible';
-        break;
-      case 'saenew':
-        api = '/api/saenew-bible';
-        break;
-      default:
-        console.log('switch error');
-        break;
-    }
+    let api = '/api/bible';
 
     this.isFetching = true;
     const result = await axios.get(
