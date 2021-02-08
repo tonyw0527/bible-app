@@ -6,15 +6,23 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   margin: 0 1rem 0 1rem;
   width: 300px;
+
+  @media (max-width: 768px) {
+    margin: 1rem;
+  }
+`;
+
+const H1 = styled.h1`
+  margin: 0;
+  margin-bottom: 0.8rem;
+  text-align: center;
 `;
 
 const Span = styled.span`
   display: block;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
 
   text-align: center;
-  font-size: 1.7rem;
+  font-size: 1rem;
   font-weight: 700;
 `;
 
@@ -28,6 +36,18 @@ const Input = styled.input`
   margin-bottom: 0.5rem;
   padding: 0.3rem;
   font-size: 1rem;
+  border: 1px solid #264445;
+
+  &[type="file"] {
+    border: none;
+    margin-bottom: 0;
+  }
+`;
+
+const ImgBox = styled.div`
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #264445;
 `;
 
 const ListBox = styled.div`
@@ -42,10 +62,10 @@ const Li = styled.li`
 `;
 
 const Button = styled.button`
-  margin-bottom: 2rem;
+  margin-bottom: 1.7rem;
   padding: 0.5rem;
   background: none;
-  border: 1px solid black;
+  border: 1px solid #264445;
   outline: 0;
 
   color: ${({ theme }) => theme.color.text};
@@ -192,7 +212,7 @@ function Maker() {
 
   return (
     <Wrapper>
-      <Span>기도 카드 만들기</Span>
+      <H1>기도 카드 만들기</H1>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
@@ -206,25 +226,28 @@ function Maker() {
             dispatch({ type: "SET_TITLE", title: e.target.value });
           }}
         />
-        <Input
-          type="file"
-          accept="image/*"
-          placeholder="이미지"
-          onChange={(e) => {
-            dispatch({ type: "SET_IMG", img: e.target.value });
-            if (e.target.files && e.target.files[0]) {
-              const reader = new FileReader();
-              reader.onload = (e) => {
-                const img = document.getElementById("card_img");
-                if (e.target) {
-                  img?.setAttribute("src", e.target.result!.toString());
-                }
-              };
-              reader.readAsDataURL(e.target.files[0]);
-            }
-          }}
-        />
 
+        <ImgBox>
+          <Span>{"이미지"}</Span>
+          <Input
+            type="file"
+            accept="image/*"
+            placeholder="이미지"
+            onChange={(e) => {
+              dispatch({ type: "SET_IMG", img: e.target.value });
+              if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                  const img = document.getElementById("card_img");
+                  if (e.target) {
+                    img?.setAttribute("src", e.target.result!.toString());
+                  }
+                };
+                reader.readAsDataURL(e.target.files[0]);
+              }
+            }}
+          />
+        </ImgBox>
         <Button type="button" onClick={addContentsBox}>
           사람 추가
         </Button>
