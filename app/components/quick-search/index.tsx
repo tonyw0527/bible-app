@@ -68,9 +68,13 @@ const Quick = observer(() => {
   const router = useRouter();
   const store = useStore();
 
+  // const [searchState, setSearchState] = useState<SearchState>({
+  //   book: Number(Cookies.get("book")),
+  //   chapter: Number(Cookies.get("chapter")),
+  // });
   const [searchState, setSearchState] = useState<SearchState>({
-    book: Number(Cookies.get("book")),
-    chapter: Number(Cookies.get("chapter")),
+    book: store.bibleStore.curr_book,
+    chapter: store.bibleStore.curr_chapter,
   });
 
   // 페이지 진입시 이전에 선택된 책, 장, 절을 하이라이팅 해줌
