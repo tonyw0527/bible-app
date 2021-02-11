@@ -68,10 +68,6 @@ const Quick = observer(() => {
   const router = useRouter();
   const store = useStore();
 
-  // const [searchState, setSearchState] = useState<SearchState>({
-  //   book: Number(Cookies.get("book")),
-  //   chapter: Number(Cookies.get("chapter")),
-  // });
   const [searchState, setSearchState] = useState<SearchState>({
     book: store.bibleStore.curr_book,
     chapter: store.bibleStore.curr_chapter,

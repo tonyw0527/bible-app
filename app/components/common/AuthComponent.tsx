@@ -38,7 +38,7 @@ const AuthComponent = observer(() => {
     renderGreetingPopUp,
   ] = usePopUp();
 
-  const handleKeyPressAndBlur = () => {
+  const handleKeyPress = () => {
     store.userStore.requestAuth().then((res) => {
       togglePopUp(res);
     });
@@ -68,6 +68,7 @@ const AuthComponent = observer(() => {
 
   return (
     <>
+      {/* Pop Up */}
       {renderGreetingPopUp(
         "info",
         "환영합니다!",
@@ -88,6 +89,7 @@ const AuthComponent = observer(() => {
           console.log("오류 팝업 cb");
         }
       )}
+
       <Input
         ref={invicodeInputRef}
         type="text"
@@ -97,10 +99,9 @@ const AuthComponent = observer(() => {
         }}
         onKeyPress={(e) => {
           if (e.code === "Enter") {
-            handleKeyPressAndBlur();
+            handleKeyPress();
           }
         }}
-        onBlur={handleKeyPressAndBlur}
         placeholder="초대코드"
       />
       <Span ref={authSpanRef}></Span>
