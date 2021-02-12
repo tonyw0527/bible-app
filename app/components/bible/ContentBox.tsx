@@ -12,8 +12,6 @@ const Container = styled.div`
   padding: 0.8rem 0.8rem;
 
   word-break: keep-all;
-  line-height: 1.9rem;
-
   overflow-x: hidden;
 
   @media (min-width: 768px) {
@@ -69,6 +67,7 @@ const ContentBox = observer(() => {
   const renderBible = () => {
     const verses = toJS(store.bibleStore.curr_bible);
     // 데스크톱 레이아웃을 위해 두 개의 블럭으로 나누어 렌더링
+
     const remainder = Math.ceil(verses.length / 2) - 1;
     const arr1 = verses.slice(0, -remainder);
     const arr2 = verses.slice(-remainder);

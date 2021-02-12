@@ -4,21 +4,31 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 7vh;
   background: ${({ theme }) => theme.color.main_back};
   text-align: center;
+
+  @media (min-width: 768px) {
+    height: 8vh;
+  }
 `;
 
 const StateSpan = styled.span`
   display: block;
-  margin-top: 0.65rem;
   font-weight: 700;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.color.main_state_text};
 
   &: hover {
     cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
   }
 `;
 
