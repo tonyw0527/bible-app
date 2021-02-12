@@ -13,10 +13,6 @@ export default (req, res) => {
   dbConnect();
 
   const { book, chapter } = req.query;
-  if (invicode !== process.env.INVITATION_CODE){
-    res.status(400).json({ suceess: false, msg: "Wrong Code."})
-    return;
-  }
     console.log('query', book, chapter);
     hanBookModel.find({$and:[{ book: book },{chapter: chapter}]}).sort({ verse: 1}).exec((err, data) => {
         if(err){

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import DarkModeToggleButton from "../common/DarkModeToggleButton";
-import AuthComponent from "../common/AuthComponent";
 import styled from "styled-components";
 
 const Container = styled.header`
@@ -37,7 +36,6 @@ export default function Header({ onToggleTheme }: HeaderProps) {
       <Link href="/pray-card">
         <A>기도카드</A>
       </Link>
-      <AuthComponent />
       <DarkModeToggleButton onToggleTheme={onToggleTheme} />
     </Container>
   );

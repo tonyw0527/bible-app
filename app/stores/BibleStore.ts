@@ -40,6 +40,10 @@ export default class BibleStore {
     this.isFetching = false;
 
     this.curr_book_name = bibleIndex[this.curr_book][0];
+    this.fetchOneChapter(this.curr_book, this.curr_chapter);
+    autorun(()=> {
+      console.log('bible state', this.curr_book, this.curr_chapter, this.curr_verse);
+    })
 
     // reactions
     autorun(() => {
@@ -54,6 +58,7 @@ export default class BibleStore {
   // actions
   updateCurrVerse(verse: number){
     this.curr_verse = verse;
+    Cookies.set("verse", verse, { expires: 365 });
   }
 
   async fetchOneChapter(book: number, chapter: number) {
@@ -79,6 +84,9 @@ export default class BibleStore {
       this.curr_book_name = bibleIndex[book][0];
       this.curr_book_max_chapter = bibleIndex[book][1];
       this.isFetching = false;
+
+      Cookies.set("book", book, { expires: 365 });
+      Cookies.set("chapter", chapter, { expires: 365 });
     });
   }
 

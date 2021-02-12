@@ -62,7 +62,7 @@ const ControlBox = () => {
     const book = store?.bibleStore?.curr_book ?? 1;
     const chapter = store?.bibleStore?.curr_chapter ?? 1;
     const maxChapter = store?.bibleStore.curr_book_max_chapter;
-
+    store.bibleStore.updateCurrVerse(1);
     switch (action) {
       case "prev":
         if (chapter === 1) {

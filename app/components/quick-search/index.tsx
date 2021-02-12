@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useStore } from "../../stores/StoreProvider";
 import { observer } from "mobx-react";
 import bibleIndex from "../../utils/bibleIndex";
-import Cookies from "js-cookie";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -165,8 +164,6 @@ const Quick = observer(() => {
                 book: bookIndex,
                 chapter: i,
               });
-              Cookies.set("book", String(bookIndex), { expires: 365 });
-              Cookies.set("chapter", String(i), { expires: 365 });
             }}
           >
             {i} 장
@@ -195,9 +192,7 @@ const Quick = observer(() => {
           onClick={(e) => {
             const choice = document.getElementById((e.target as Element).id);
             choice!.style.background = "yellowGreen";
-            Cookies.set("verse", String(i), { expires: 365 });
             store?.bibleStore.updateCurrVerse(i);
-
             router.push("/bible");
           }}
         >
