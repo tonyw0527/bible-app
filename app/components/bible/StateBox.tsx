@@ -1,6 +1,6 @@
 import { useStore } from "../../stores/StoreProvider";
 import { observer } from "mobx-react";
-
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -16,14 +16,25 @@ const StateSpan = styled.span`
   font-weight: 700;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.color.main_state_text};
+
+  &: hover {
+    cursor: pointer;
+  }
 `;
 
 const StateBox = observer(() => {
   const store = useStore();
+  const router = useRouter();
+
+  const handleStateSpanClick = () => {
+    router.push("/quick-search");
+  };
 
   return (
     <Container>
-      <StateSpan>{`${store?.bibleStore.curr_book_name} ${store?.bibleStore.curr_chapter}장`}</StateSpan>
+      <StateSpan
+        onClick={handleStateSpanClick}
+      >{`${store?.bibleStore.curr_book_name} ${store?.bibleStore.curr_chapter}장`}</StateSpan>
     </Container>
   );
 });
