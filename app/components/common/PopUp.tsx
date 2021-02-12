@@ -114,9 +114,6 @@ function PopUp({ popUpType, visible, title, msg, close, onClose }: PopUpProps) {
 
   useEffect(() => {
     wrapperRef.current.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      wrapperRef.current.removeEventListener("mousedown", handleClickOutside);
-    };
   }, []);
 
   useEffect(() => {

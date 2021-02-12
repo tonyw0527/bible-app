@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { usePopUp } from "../../hooks/usePopUp";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -87,37 +90,60 @@ const Span = styled.span`
 `;
 
 export default function Home() {
+  // pop up
+  const [isPopUp, togglePopUp, renderPopUp] = usePopUp();
+  const handleStamp = () => {
+    Cookies.set("stamp", "1");
+  };
+
+  useEffect(() => {
+    if (Cookies.get("stamp") !== "1") {
+      console.log("there is no stamp");
+      togglePopUp(false);
+    }
+    return () => {};
+  }, []);
+
   return (
-    <Container>
-      <TitleBox>
-        <TitleSpan>온라인 성경</TitleSpan>
-      </TitleBox>
+    <>
+      {renderPopUp(
+        "info",
+        "환영합니다!",
+        "God bless you!",
+        "확인",
+        handleStamp
+      )}
+      <Container>
+        <TitleBox>
+          <TitleSpan>온라인 성경</TitleSpan>
+        </TitleBox>
 
-      <DescBox>
-        <Link href="/bible">
-          <A>
-            <LinkBox>
-              성경 읽기
-              <I source="./icons/home/open-bible.svg">
-                <Span>bible icon</Span>
-              </I>
-            </LinkBox>
-          </A>
-        </Link>
+        <DescBox>
+          <Link href="/bible">
+            <A>
+              <LinkBox>
+                성경 읽기
+                <I source="./icons/home/open-bible.svg">
+                  <Span>bible icon</Span>
+                </I>
+              </LinkBox>
+            </A>
+          </Link>
 
-        <Link href="/pray-card">
-          <A>
-            <LinkBox>
-              기도 카드
-              <I source="./icons/home/pray-card.svg">
-                <Span>pray card icon</Span>
-              </I>
-            </LinkBox>
-          </A>
-        </Link>
-      </DescBox>
+          <Link href="/pray-card">
+            <A>
+              <LinkBox>
+                기도 카드
+                <I source="./icons/home/pray-card.svg">
+                  <Span>pray card icon</Span>
+                </I>
+              </LinkBox>
+            </A>
+          </Link>
+        </DescBox>
 
-      <DescSpan>함께 읽어요!</DescSpan>
-    </Container>
+        <DescSpan>함께 읽어요!</DescSpan>
+      </Container>
+    </>
   );
 }

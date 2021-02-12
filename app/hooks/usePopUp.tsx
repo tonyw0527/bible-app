@@ -45,7 +45,6 @@ export const usePopUp = (
   };
 
   useEffect(() => {
-    console.log("usePopup start");
     if (initVisible) {
       setIsPopUp(true);
     }
