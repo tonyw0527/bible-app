@@ -18,7 +18,12 @@ const TitleBox = styled.div`
 
 const TitleSpan = styled.span`
   display: block;
-  font-size: 3rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const DescBox = styled.div`
@@ -26,7 +31,11 @@ const DescBox = styled.div`
   margin-bottom: 3rem;
 `;
 const DescSpan = styled.span`
-  font-size: 2rem;
+  font-size: 1.2rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 const A = styled.a`
@@ -44,19 +53,20 @@ const LinkBox = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin: 0.5em;
+  margin: 0.5rem;
   background: none;
 
   width: 10rem;
   height: 10rem;
 
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 
   background: ${({ theme }) => theme.color.header};
   border-radius: 10px;
 
   @media (min-width: 768px) {
     margin: 1rem;
+    font-size: 1.4rem;
   }
 `;
 type Iprops = {
