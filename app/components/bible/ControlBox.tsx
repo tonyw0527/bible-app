@@ -1,6 +1,6 @@
 import { useStore } from "../../stores/StoreProvider";
 import { useRouter } from "next/router";
-
+import { usePopUp } from "../../hooks/usePopUp";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -57,6 +57,8 @@ const TopBtn = styled(CircleButton)`
 const ControlBox = () => {
   const router = useRouter();
   const store = useStore();
+  const [isFirstPopUp, toggleFirstPopUp, renderFirstPopUp] = usePopUp();
+  const [isLastPopUp, toggleLastPopUp, renderLastPopUp] = usePopUp();
 
   const handlePrevNextBtn = (action: string) => {
     const book = store?.bibleStore?.curr_book ?? 1;
@@ -66,7 +68,8 @@ const ControlBox = () => {
     switch (action) {
       case "prev":
         if (chapter === 1) {
-          alert("첫 장입니다 :)");
+          console.log("첫 장입니다 :)");
+          toggleFirstPopUp(false);
           return;
         }
         store?.bibleStore?.fetchOneChapter(book, chapter - 1);
@@ -74,7 +77,8 @@ const ControlBox = () => {
 
       case "next":
         if (chapter === maxChapter) {
-          alert("마지막 장입니다 :)");
+          console.log("마지막 장입니다 :)");
+          toggleLastPopUp(false);
           return;
         }
         store?.bibleStore?.fetchOneChapter(book, chapter + 1);
@@ -87,19 +91,23 @@ const ControlBox = () => {
   };
 
   return (
-    <Container>
-      <HomeBtn onClick={() => router.push("/")}></HomeBtn>
-      <SearchBtn onClick={() => router.push("/quick-search")}></SearchBtn>
-      <LeftBtn onClick={() => handlePrevNextBtn("prev")}></LeftBtn>
-      <RightBtn onClick={() => handlePrevNextBtn("next")}></RightBtn>
-      <TopBtn
-        id="topButton"
-        type="button"
-        onClick={() => {
-          window.scrollTo(0, 0);
-        }}
-      ></TopBtn>
-    </Container>
+    <>
+      {renderFirstPopUp("info", "알림", "첫 장입니다 :D", "확인", () => {})}
+      {renderLastPopUp("info", "알림", "마지막 장입니다 :D", "확인", () => {})}
+      <Container>
+        <HomeBtn onClick={() => router.push("/")}></HomeBtn>
+        <SearchBtn onClick={() => router.push("/quick-search")}></SearchBtn>
+        <LeftBtn onClick={() => handlePrevNextBtn("prev")}></LeftBtn>
+        <RightBtn onClick={() => handlePrevNextBtn("next")}></RightBtn>
+        <TopBtn
+          id="topButton"
+          type="button"
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        ></TopBtn>
+      </Container>
+    </>
   );
 };
 
