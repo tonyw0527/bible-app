@@ -4,6 +4,7 @@ import { DefaultTheme } from 'styled-components';
 const lightTheme: DefaultTheme = {
   mode: 'light',
   mode_img: './icons/darkmode/sun.svg',
+  home_img: './sea-light.jpg',
 
   color: {
       body: 'white',
@@ -20,6 +21,7 @@ const lightTheme: DefaultTheme = {
 const darkTheme: DefaultTheme = {
   mode: 'dark',
   mode_img: './icons/darkmode/moon.svg',
+  home_img: './sea-night.jpg',
 
   color: {
       body: '#0D1117',

@@ -5,11 +5,13 @@ declare module 'styled-components' {
     export interface DefaultTheme {
         mode: string;
         mode_img: string;
+        home_img: string;
 
         color: {
             body: string;
             header: string;
             text: string;
+            footer: string;
             main_back: string;
             main_state_text: string;
             main_btn: string;

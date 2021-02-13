@@ -10,6 +10,7 @@ const Container = styled.div`
   width: 100vw;
   min-height: 100vh;
   padding: 0.8rem 0.8rem;
+  padding-bottom: 0;
 
   word-break: keep-all;
   overflow-x: hidden;
@@ -19,6 +20,7 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: space-around;
     padding: 0.8rem 4rem;
+    padding-bottom: 0;
   }
 `;
 

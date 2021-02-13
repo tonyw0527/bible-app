@@ -12,6 +12,11 @@ const Container = styled.div`
   align-items: center;
 
   width: 100%;
+  height: 95vh;
+  margin-bottom: 0.5rem;
+
+  background-image: url(${({ theme }) => theme.home_img});
+  background-size: cover;
 `;
 
 const TitleBox = styled.div`
@@ -64,8 +69,24 @@ const LinkBox = styled.div`
 
   font-size: 1.2rem;
 
-  background: ${({ theme }) => theme.color.header};
-  border-radius: 10px;
+  
+Blur value
+4.0
+
+Transparency
+0.15
+
+Color
+
+Show outline
+CSS
+
+background: rgba( 255, 255, 255, 0.15 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4.0px );
+-webkit-backdrop-filter: blur( 4.0px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 
   @media (min-width: 768px) {
     margin: 1rem;
