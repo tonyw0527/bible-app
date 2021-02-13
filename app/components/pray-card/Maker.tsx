@@ -221,6 +221,7 @@ function Maker() {
         <Input
           type="text"
           placeholder="제목"
+          maxLength={18}
           value={state.title}
           onChange={(e) => {
             dispatch({ type: "SET_TITLE", title: e.target.value });

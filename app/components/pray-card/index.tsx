@@ -58,10 +58,10 @@ function reducer(state: State, action: Action): State {
 }
 
 const initialState = {
-  title: "",
-  img: "",
-  contents: [],
-  word: "",
+  title: "Tony's Pray",
+  img: "./icons/pray-card/man.png",
+  contents: [{ name: "Tony", list: ["for happiness"] }],
+  word: "God is love",
 };
 
 const CardContext = createContext<[State, React.Dispatch<any>]>([
