@@ -11,7 +11,6 @@ declare module 'styled-components' {
             body: string;
             header: string;
             text: string;
-            footer: string;
             main_back: string;
             main_state_text: string;
             main_btn: string;
