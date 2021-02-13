@@ -20,7 +20,7 @@ const Container = styled.div`
 const StateSpan = styled.span`
   display: block;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: ${({ theme }) => theme.color.main_state_text};
 
   &: hover {
@@ -28,7 +28,7 @@ const StateSpan = styled.span`
   }
 
   @media (min-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 `;
 

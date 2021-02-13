@@ -23,7 +23,7 @@ const VerseSpan = styled.span`
   text-align: end;
 
   @media (min-width: 768px) {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 `;
 const ContentSpan = styled.span`
@@ -31,7 +31,7 @@ const ContentSpan = styled.span`
   line-height: 1.5;
 
   @media (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 `;
 

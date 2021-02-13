@@ -18,6 +18,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 0.8rem 4rem;
   }
 `;
 

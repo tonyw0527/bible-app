@@ -7,12 +7,12 @@ const lightTheme: DefaultTheme = {
 
   color: {
       body: 'white',
-      header: '#e8eae6',
+      header: '#f8f8f8',
       text: '#363537',
-      main_back: '#a0c1b8',
-      main_state_text: '#ffdf91',
+      main_back: '#ebdcb5',
+      main_state_text: '#a67a5b',
       main_btn: '#719fb0',
-      verse_num: '#045762',
+      verse_num: '#d5b895',
   }
 }
 
