@@ -40,9 +40,9 @@ const CardImgBox = styled.div`
 `;
 const CardTitleSpan = styled.span`
   display: block;
-  padding: 0.5rem;
+  padding: 0.3rem;
 
-  border-bottom: 1px solid #fddb3a;
+  border-bottom: 2px solid #fddb3a;
 
   font-family: "yg-jalnan";
   text-align: center;

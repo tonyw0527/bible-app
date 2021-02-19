@@ -11,6 +11,7 @@ const Container = styled.div`
   justify-content: center;
   align-content: center;
   overflow-x: hidden;
+  padding: 1rem;
 `;
 
 type Content = {
@@ -58,9 +59,9 @@ function reducer(state: State, action: Action): State {
 }
 
 const initialState = {
-  title: "Tony's Pray",
+  title: "Tony's Pray Card",
   img: "./icons/pray-card/man.png",
-  contents: [{ name: "Tony", list: ["for happiness"] }],
+  contents: [{ name: "Tony", list: ["For your happiness"] }],
   word: "God is love",
 };
 

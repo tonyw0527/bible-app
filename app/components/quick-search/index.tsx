@@ -192,7 +192,7 @@ const Quick = observer(() => {
           onClick={(e) => {
             const choice = document.getElementById((e.target as Element).id);
             choice!.style.background = "yellowGreen";
-            store?.bibleStore.updateCurrVerse(i);
+            store.bibleStore.updateCurrVerse(i);
             router.push("/bible");
           }}
         >
